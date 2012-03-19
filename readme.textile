@@ -1,0 +1,3 @@
+h1. Overview
+
+WYSIWYG editors suck. Fortunately Xing are rectifying it by building "wysihtml5":https://github.com/xing/wysihtml5. Styling and set up is a little lacking though so I thought I'd build a "twitter bootstrap":http://twitter.github.com/bootstrap/ theme for it.
