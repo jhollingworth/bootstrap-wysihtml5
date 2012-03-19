@@ -4,11 +4,21 @@
 	Wysihtml5 = function(el, options) {
 		this.el = el;
 		this.options = options;
-
-		$('#toolbar').button();
+		this.toolbar = $('#toolbar').button();
+		var self = this;
+		this.toolbar.find("a[data-wysihtml5-command='formatBlock']").click(function(e) {
+			var el = $(e.srcElement);
+			self.toolbar.find('.current-font').text(el.html())
+		});
+		
+		
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
     		toolbar: "toolbar"
   		});
+
+		this.editor.on('aftercommand:composer', function() { 
+			console.log(arguments);
+		});
 	};
 
 	Wysihtml5.prototoype = {
