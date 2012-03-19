@@ -48,11 +48,19 @@
 		constructor: Wysihtml5,
 		
 		createToolbar: function(el, options) {
-			var toolbar = $("<ul id='" + el.attr('id') + "wysihtml5-toolbar' class='wysihtml5-toolbar'></ul>").button();
+			var toolbar = $("<ul id='" + el.attr('id') + "-wysihtml5-toolbar' class='wysihtml5-toolbar'></ul>").button();
 
-			for(var key in options) {
-				var value = defaultOptions[key];
-
+			for(var key in defaultOptions) {
+				var value;
+				
+				if(options[key] != undefined) {
+					if(options[key] == true) {
+						value = true;
+					}
+				} else {
+					value = defaultOptions[key];
+				}
+				
 				if(value == true) {
 					toolbar.append(templates[key]);
 				}
