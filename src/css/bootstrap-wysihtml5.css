@@ -1,0 +1,24 @@
+ul.toolbar {
+	list-style: none;
+	clear: both;
+	display:block;
+	margin: 0;
+}
+
+ul.toolbar > li {
+	float: left;
+	margin: 0 5px 10px 0;
+}
+
+ul.toolbar:last-child {
+	clear:right;
+}
+
+
+.toolbar a[data-wysihtml5-command=bold] {
+	font-weight: bold;
+}
+
+.toolbar a[data-wysihtml5-command=italic] {
+	font-style: italic;
+}

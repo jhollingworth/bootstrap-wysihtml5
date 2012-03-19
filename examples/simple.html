@@ -6,74 +6,88 @@
 <title>bootstrap-wysihtml5</title>
 
 
-<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css"></link>
-<link rel="stylesheet" type="text/css" href="../lib/font-awesome/css/font-awesome.css"></link>
-<link rel="stylesheet" type="text/css" href="../src/bootstrap-wysihtml5.css"></link>
+<link rel="stylesheet" type="text/css" href="../src/css/bootstrap.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../src/css/bootstrap-wysihtml5.css"></link>
 
 <h1>bootstrap-wysihtml5</h1>
 
 
 <form>
-  <div id="toolbar" class="toolbar" style="display: none;">
-	
-	<div class="btn-group" data-toggle="buttons-checkbox" style="float:left">		
-	    <a class="btn" data-wysihtml5-command="bold" title="CTRL+B">Bold</a>
-	    <a class="btn" data-wysihtml5-command="italic" title="CTRL+I">Italic</a>
-	</div>
-	
-	<div class="btn-group" data-toggle="buttons-checkbox" style="float:left">
-    	<a class="btn" data-wysihtml5-command="insertUnorderedList"><i class="icon-list"></i></a>
-	    <a class="btn" data-wysihtml5-command="insertOrderedList"><i class="icon-th-list"></i></a>		
-	</div>
-	<a class="btn" data-wysihtml5-command="createLink"><i class="icon-share-alt"></i></a>
-    <a class="btn" data-wysihtml5-command="insertImage"><i class="icon-camera"></i></a>
+	<div style="clear: both">
+	<ul id="toolbar" class="toolbar" style="display: none;">
 
-	<div class="btn-group">
-        <a class="btn" href="#"><i class="icon-font"></i> Font</a>
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-chevron-down"></span></a>
-        <ul class="dropdown-menu">
-            <li><a class="active" href="#">Normal</a></li>
-            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">H1</a></li>
-            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">H2</a></li>
-        </ul>
-    </div>
-    
+		<li>
+			<div class="btn-group" data-toggle="buttons-checkbox">		
+			    <a class="btn" data-wysihtml5-command="bold" title="CTRL+B">Bold</a>
+			    <a class="btn" data-wysihtml5-command="italic" title="CTRL+I">Italic</a>
+			</div>
+		</li>
+		<li>
+			<div class="btn-group" data-toggle="buttons-checkbox">
+		    	<a class="btn" data-wysihtml5-command="insertUnorderedList"><i class="icon-list"></i></a>
+			    <a class="btn" data-wysihtml5-command="insertOrderedList"><i class="icon-th-list"></i></a>		
+			</div>
+		</li>
+	  	<li class="dropdown">
+	    	<a class="dropdown-toggle btn" data-toggle="dropdown" data-wysihtml5-command="createLink">
+				<i class="icon-share-alt"></i>
+	    	</a>
+	    	<ul class="dropdown-menu">
+		    	<li>
+			      		<label>
+			        		Link:
+			        	<input data-wysihtml5-dialog-field="href" value="http://" class="text">
+			      		</label>
+			      		<a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+		      	</li>
+		    </ul>
+	  	</li>
+		<li class="dropdown">
+	    	<a class="dropdown-toggle btn" data-toggle="dropdown" data-wysihtml5-command="insertImage">
+				<i class="icon-camera"></i>
+	    	</a>
+	    	<ul class="dropdown-menu">
+		      <li>
+				      <label>
+				        Image:
+				        <input data-wysihtml5-dialog-field="src" value="http://" class="text">
+				      </label>
+				      <label>
+				        Align:
+				        <select data-wysihtml5-dialog-field="className">
+				          <option value="">default</option>
+				          <option value="wysiwyg-float-left">left</option>
+				          <option value="wysiwyg-float-right">right</option>
+				        </select>
+				      </label>
+				      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
 
+				</li>
+		    </ul>
+	  	</li>
+		<li class="dropdown">
+			<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="icon-font"></i>&nbsp;<span class="current-font">Paragraph<span>&nbsp;<b class="caret"></b>
+			</a> 
+		    <ul class="dropdown-menu">
+		      	<li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">Paragraph</a></li>
+	            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">H1</a></li>
+	            <li><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">H2</a></li>
+		    </ul>
+		</li>
+	</ul>
+</div>
 
- 	<div data-wysihtml5-dialog="createLink" style="display: none;">
-      <label>
-        Link:
-        <input data-wysihtml5-dialog-field="href" value="http://" class="text">
-      </label>
-      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
-    </div>
-
-    <div data-wysihtml5-dialog="insertImage" style="display: none;">
-      <label>
-        Image:
-        <input data-wysihtml5-dialog-field="src" value="http://" class="text">
-      </label>
-      <label>
-        Align:
-        <select data-wysihtml5-dialog-field="className">
-          <option value="">default</option>
-          <option value="wysiwyg-float-left">left</option>
-          <option value="wysiwyg-float-right">right</option>
-        </select>
-      </label>
-      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
-    </div>
-  </div>
 
   <textarea id="textarea" placeholder="Enter text ..." cols="50" rows="10"></textarea>
   
 </form>
 
-<script src="../lib/wysihtml5-0.3.0_rc1.min.js"></script>
-<script src="../lib/jquery-1.7.1.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap-button.js"></script>
-<script src="../src/bootstrap-wysihtml5.js"></script>
+<script src="../src/js/wysihtml5-0.3.0_rc1.min.js"></script>
+<script src="../src/js/jquery-1.7.1.min.js"></script>
+<script src="../src/js/bootstrap.min.js"></script>
+<script src="../src/js/bootstrap-button.js"></script>
+<script src="../src/js/bootstrap-wysihtml5.js"></script>
 
 <script>
   
