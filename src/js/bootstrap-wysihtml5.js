@@ -4,10 +4,10 @@
 	var templates = {
 		"font-styles": "<li class='dropdown'>" +
 							"<a class='btn dropdown-toggle' data-toggle='dropdown' href='#'>" +
-								"<i class='icon-font'></i>&nbsp;<span class='current-font'>Paragraph</span>&nbsp;<b class='caret'></b>" +
+								"<i class='icon-font'></i>&nbsp;<span class='current-font'>Normal text</span>&nbsp;<b class='caret'></b>" +
 							"</a>" +
 						    "<ul class='dropdown-menu'>" +
-						      	"<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div'>Paragraph</a></li>" +
+						      	"<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div'>Normal text</a></li>" +
 					            "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1'>Heading 1</a></li>" +
 					            "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2'>Heading 2</a></li>" +
 						    "</ul>" +
