@@ -1,0 +1,10 @@
+.toolbar {
+}
+
+.toolbar a[data-wysihtml5-command=bold] {
+	font-weight: bold;
+}
+
+.toolbar a[data-wysihtml5-command=italic] {
+	font-style: italic;
+}
