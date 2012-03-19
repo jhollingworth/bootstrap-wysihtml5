@@ -15,7 +15,7 @@
 
 <form style="margin-left: 20px">
 
-	<ul id="toolbar" class="toolbar">
+	<ul id="toolbar" class="wysihtml5-toolbar">
 		<li class="dropdown">
 			<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 				<i class="icon-font"></i>&nbsp;<span class="current-font">Paragraph</span>&nbsp;<b class="caret"></b>
@@ -42,13 +42,11 @@
 	    	<a class="dropdown-toggle btn" data-toggle="dropdown" data-wysihtml5-command="createLink">
 				<i class="icon-share-alt"></i>
 	    	</a>
-	    	<ul class="dropdown-menu">
+	    	<ul class="dropdown-menu wysihtml5-create-link">
 		    	<li>
-			      		<label>
-			        		Link:
-			        	<input data-wysihtml5-dialog-field="href" value="http://" class="text">
-			      		</label>
-			      		<a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+			      	<input data-wysihtml5-dialog-field="href" value="http://" class="text">
+			      	<a data-wysihtml5-dialog-action="save" class="btn">OK</a>
+					<a data-wysihtml5-dialog-action="cancel">Cancel</a>
 		      	</li>
 		    </ul>
 	  	</li>

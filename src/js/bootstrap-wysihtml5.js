@@ -10,6 +10,10 @@
 			var el = $(e.srcElement);
 			self.toolbar.find('.current-font').text(el.html())
 		});
+		this.toolbar.find("a[data-wysihtml5-command='createLink']").click(function(e) {
+			var el = $(e.srcElement);
+			//el.parent().find("input[data-wysihtml5-dialog-field='href']").focus());
+		})
 		
 		
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
