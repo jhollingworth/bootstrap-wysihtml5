@@ -38,9 +38,6 @@
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
     		toolbar: this.toolbar.attr('id')
   		});
-  		if($.browser.msie) {
-  			this.el.hide();
-  		}
 	};
 
 	Wysihtml5.prototype = {
