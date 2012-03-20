@@ -38,10 +38,6 @@
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
     		toolbar: this.toolbar.attr('id')
   		});
-
-		this.editor.on('aftercommand:composer', function() { 
-			console.log(arguments);
-		});
 	};
 
 	Wysihtml5.prototype = {
