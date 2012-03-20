@@ -1,4 +1,4 @@
-!function($, wysi) {
+ugh!function($, wysi) {
 	"use scrict"
 	
 	var templates = {
