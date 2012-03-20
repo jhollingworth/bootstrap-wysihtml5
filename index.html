@@ -10,10 +10,22 @@
 <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"></link>
 <link rel="stylesheet" type="text/css" href="lib/css/prettify.css"></link>
 <link rel="stylesheet" type="text/css" href="src/bootstrap-wysihtml5.css"></link>
+
+<style type="text/css" media="screen">
+	.btn.jumbo {
+		font-size: 20px;
+		font-weight: normal;
+		padding: 14px 24px;
+		margin-right: 10px;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+	}
+</style>
 </head>
 <body>
 <div class="container">
-	<div class="hero-unit" style="margin-top:30px">
+	<div class="hero-unit" style="margin-top:20px">
 		<h1>Bootstrap wysihtml5</h1>
 		<hr/>
 		<textarea id="textarea" placeholder="Enter text ..." style="width: 810px; height: 200px"></textarea>
@@ -21,7 +33,13 @@
 	
 	<div class="row">
 		<div class="span6">
-	        <h2>Files you need to include</h2>
+	        <h2>Usage</h2>
+			
+		    <p>
+				<pre class="prettyprint linenums">$('#textarea').wysihtml5();</pre>     
+			</p>
+		
+			<h3>Dependancies</h3>
 	        <p>
 				<ul>
 					<li><a href="https://raw.github.com/jhollingworth/bootstrap-wysihtml5/master/src/bootstrap-wysihtml5.js">bootstrap-wysihtml5.js</a></li>
@@ -29,12 +47,11 @@
 					<li><a href="https://github.com/xing/wysihtml5">wysihtml5</a></li>
 					<li><a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a></li>
 				</ul>
-	    	</p>	       
+	    	</p> 
 		</div>
-		<div class="span6">
-			<h2>How to use</h2>
+		<div class="span6" style="text-align:center; padding-top: 45px">
 			<p>
-	          	<pre class="prettyprint linenums">$('#textarea').wysihtml5();</pre>
+				<a class="btn btn-large btn-primary jumbo" href="https://github.com/jhollingworth/bootstrap-wysihtml5/">View project on Github</a>
 			</p>
 		</div>
 	</div>
