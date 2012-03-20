@@ -4,7 +4,7 @@ WYSIWYG editors suck. Fortunately Xing are rectifying it by building "wysihtml5"
 
 h1. Examples
 
-* http://jhollingworth.github.com/bootstrap-wysihtml5
+* "http://jhollingworth.github.com/bootstrap-wysihtml5":http://jhollingworth.github.com/bootstrap-wysihtml5/
 
 h1. Usage
 
