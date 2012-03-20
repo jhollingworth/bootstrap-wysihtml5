@@ -32,7 +32,7 @@
 		"lists": true
 	};
 
-	Wysihtml5 = function(el, options) {
+	var Wysihtml5 = function(el, options) {
 		this.el = el;
 		this.toolbar = this.createToolbar(el, options || defaultOptions);
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
