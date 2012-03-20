@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+
+<title>bootstrap-wysihtml5</title>
+
+
+<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"></link>
+<link rel="stylesheet" type="text/css" href="lib/css/prettify.css"></link>
+<link rel="stylesheet" type="text/css" href="src/bootstrap-wysihtml5.css"></link>
+</head>
+<body>
+<div class="container">
+	<div class="hero-unit" style="margin-top:30px">
+		<h1>Bootstrap wysihtml5</h1>
+		<hr/>
+		<textarea id="textarea" placeholder="Enter text ..." style="width: 810px; height: 200px"></textarea>
+	</div>
+	
+	<div class="row">
+		<div class="span6">
+	        <h2>Files you need to include</h2>
+	        <p>
+				<ul>
+					<li>bootstrap-wysihtml5.js</li>
+					<li>wysihtml5-0.3.0_rc1.js</li>
+					<li>bootstrap-wysihtml5.css</li>
+				</ul>
+	    	</p>	       
+		</div>
+		<div class="span6">
+			<h2>How to use</h2>
+			<p>
+	          	<pre class="prettyprint linenums">$('#textarea').wysihtml5();</pre>
+			</p>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="lib/js/wysihtml5-0.3.0_rc1.js"></script>
+<script src="lib/js/jquery-1.7.1.min.js"></script>
+<script src="lib/js/prettify.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="src/bootstrap-wysihtml5.js"></script>
+
+<script>
+	$('#textarea').wysihtml5();
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	$(prettyPrint);
+</script>
+
+</body>
+</html>
