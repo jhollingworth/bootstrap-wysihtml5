@@ -38,6 +38,14 @@
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
     		toolbar: this.toolbar.attr('id')
   		});
+  		
+  		$('iframe.wysihtml5-sandbox').each(function(i, el){
+			$(el.contentWindow).off('focus.wysihtml5').on({
+			  'focus.wysihtml5' : function(){
+			     $('li.dropdown').removeClass('open');
+			   }
+			});
+		});
 	};
 
 	Wysihtml5.prototype = {
@@ -82,7 +90,7 @@
 	$.fn.wysihtml5 = function (options) {
 		return this.each(function () {
 			var $this = $(this);
-	      	$this.data('wysihtml5', new Wysihtml5($this, options));	
+	      	$this.data('wysihtml5', new Wysihtml5($this, options));
 	    })
   	};
 
