@@ -1,5 +1,5 @@
-ugh!function($, wysi) {
-	"use scrict"
+!function($, wysi) {
+	"use strict"
 	
 	var templates = {
 		"font-styles": "<li class='dropdown'>" +
