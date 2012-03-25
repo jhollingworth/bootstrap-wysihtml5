@@ -56,7 +56,7 @@
 					id : el.attr('id') + "-wysihtml5-toolbar",
 					class : "wysihtml5-toolbar",
 					style: "display:none"
-				}).button();
+				});
 
 			for(var key in defaultOptions) {
 				var value;
