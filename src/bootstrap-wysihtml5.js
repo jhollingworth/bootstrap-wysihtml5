@@ -32,11 +32,34 @@
 		"lists": true
 	};
 
+	var parserRules = {
+		tags: {
+			b:  {},
+			i:  {},
+			br: {},
+			ol: {},
+			ul: {},
+			li: {},
+			h1: {},
+			h2: {},
+			a:  {
+				set_attributes: {
+					target: "_blank",
+					rel:    "nofollow"
+				},
+				check_attributes: {
+					href:   "url" // important to avoid XSS
+				}
+			}
+		}
+	};
+
 	var Wysihtml5 = function(el, options) {
 		this.el = el;
 		this.toolbar = this.createToolbar(el, options || defaultOptions);
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
-    		toolbar: this.toolbar.attr('id')
+    		toolbar: this.toolbar.attr('id'),
+		parserRules: parserRules
   		});
   		
   		$('iframe.wysihtml5-sandbox').each(function(i, el){
@@ -56,7 +79,7 @@
 					id : el.attr('id') + "-wysihtml5-toolbar",
 					class : "wysihtml5-toolbar",
 					style: "display:none"
-				}).button();
+				});
 
 			for(var key in defaultOptions) {
 				var value;
