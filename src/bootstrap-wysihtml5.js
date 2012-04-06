@@ -79,7 +79,7 @@
 		createToolbar: function(el, options) {
 			var toolbar = $("<ul/>", {
 					id : el.attr('id') + "-wysihtml5-toolbar",
-					class : "wysihtml5-toolbar",
+					'class' : "wysihtml5-toolbar",
 					style: "display:none"
 				});
 
