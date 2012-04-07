@@ -40,27 +40,27 @@
 		"font-styles": true,
 		"emphasis": true,
 		"lists": true,
-		"html": false
-	};
-
-	var parserRules = {
-		tags: {
-			"b":  {},
-			"i":  {},
-			"br": {},
-			"ol": {},
-			"ul": {},
-			"li": {},
-			"h1": {},
-			"h2": {},
-			"u": 1,
-			"a":  {
-				set_attributes: {
-					target: "_blank",
-					rel:    "nofollow"
-				},
-				check_attributes: {
-					href:   "url" // important to avoid XSS
+		"html": false,
+		events: {},
+		parserRules: {
+			tags: {
+				"b":  {},
+				"i":  {},
+				"br": {},
+				"ol": {},
+				"ul": {},
+				"li": {},
+				"h1": {},
+				"h2": {},
+				"u": 1,
+				"a":  {
+					set_attributes: {
+						target: "_blank",
+						rel:    "nofollow"
+					},
+					check_attributes: {
+						href:   "url" // important to avoid XSS
+					}
 				}
 			}
 		}
@@ -69,11 +69,8 @@
 	var Wysihtml5 = function(el, options) {
 		this.el = el;
 		this.toolbar = this.createToolbar(el, options || defaultOptions);
-		this.editor =  new wysi.Editor(this.el.attr('id'), {
-    		toolbar: this.toolbar.attr('id'),
-		parserRules: parserRules
-  		});
-  		
+		this.editor =  this.createEditor(options);
+
   		$('iframe.wysihtml5-sandbox').each(function(i, el){
 			$(el.contentWindow).off('focus.wysihtml5').on({
 			  'focus.wysihtml5' : function(){
@@ -85,6 +82,27 @@
 
 	Wysihtml5.prototype = {
 		constructor: Wysihtml5,
+
+		createEditor: function(options) {
+			var parserRules = defaultOptions.parserRules; 
+
+			if(options && options.parserRules) {
+				parserRules = options.parserRules;
+			}
+				
+			var editor = new wysi.Editor(this.el.attr('id'), {
+	    		toolbar: this.toolbar.attr('id'),
+				parserRules: parserRules
+	  		});
+
+	  		if(options && options.events) {
+				for(var eventName in options.events) {
+					editor.on(eventName, options.events[eventName]);
+				}
+			}	
+
+	  		return editor;
+		},
 		
 		createToolbar: function(el, options) {
 			var toolbar = $("<ul/>", {
