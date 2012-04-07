@@ -16,7 +16,7 @@
 							"<div class='btn-group'>" 
 							    + "<a class='btn' data-wysihtml5-command='bold' title='CTRL+B'>Bold</a>" 
 							    + "<a class='btn' data-wysihtml5-command='italic' title='CTRL+I'>Italic</a>" 
-							    //+ "<a class='btn' data-wysihtml5-command='underline' title='CTRL+U'>Underline</a>" 
+							    //,+ "<a class='btn' data-wysihtml5-command='underline' title='CTRL+U'>Underline</a>" 
 							+ "</div>" 
 						+ "</li>",
 		"lists": 		"<li>" 
@@ -31,7 +31,7 @@
 		"html": 
 						"<li>"
 							+ "<div class='btn-group'>"
-								+ "<a class='btn' data-wysihtml5-command='change_view' title='Edit HTML'><i class='icon-pencil'></i></a>" 
+								+ "<a class='btn' data-wysihtml5-action='change_view' title='Edit HTML'><i class='icon-pencil'></i></a>" 
 							+ "</div>"
 						+ "</li>"
 	};
@@ -40,7 +40,7 @@
 		"font-styles": true,
 		"emphasis": true,
 		"lists": true,
-		"html": true
+		"html": false
 	};
 
 	var parserRules = {
@@ -94,7 +94,7 @@
 				});
 
 			for(var key in defaultOptions) {
-				var value;
+				var value = false;
 				
 				if(options[key] != undefined) {
 					if(options[key] == true) {
@@ -106,6 +106,13 @@
 				
 				if(value == true) {
 					toolbar.append(templates[key]);
+
+					if(key == "html") {
+						var changeViewSelector = "a[data-wysihtml5-action='change_view']";
+						toolbar.find(changeViewSelector).click(function(e) {
+							toolbar.find('a.btn').not(changeViewSelector).toggleClass('disabled');
+						});
+					}
 				}
 			}
 			

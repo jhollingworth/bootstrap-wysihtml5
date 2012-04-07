@@ -38,3 +38,7 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active {
 	background-color: #D9D9D9 9;
 	outline: 0;
 }
+
+ul.wysihtml5-commands-disabled .dropdown-menu {
+	display: none !important;
+}
