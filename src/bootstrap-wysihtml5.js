@@ -13,10 +13,11 @@
 						    "</ul>" +
 						"</li>",
 		"emphasis":     "<li>" +
-							"<div class='btn-group'>" +		
-							    "<a class='btn' data-wysihtml5-command='bold' title='CTRL+B'>Bold</a>" +
-							    "<a class='btn' data-wysihtml5-command='italic' title='CTRL+I'>Italic</a>" +
-							"</div>" +
+							"<div class='btn-group'>" 
+							    + "<a class='btn' data-wysihtml5-command='bold' title='CTRL+B'>Bold</a>" 
+							    + "<a class='btn' data-wysihtml5-command='italic' title='CTRL+I'>Italic</a>" 
+							    //+ "<a class='btn' data-wysihtml5-command='underline' title='CTRL+U'>Underline</a>" +
+							+ "</div>" +
 						"</li>",
 		"lists": 		"<li>" +
 							"<div class='btn-group'>" +
