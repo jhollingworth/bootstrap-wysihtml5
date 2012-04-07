@@ -21,8 +21,10 @@
 						"</li>",
 		"lists": 		"<li>" +
 							"<div class='btn-group'>" +
-						    	"<a class='btn' data-wysihtml5-command='insertUnorderedList'><i class='icon-list'></i></a>" +
-							    "<a class='btn' data-wysihtml5-command='insertOrderedList'><i class='icon-th-list'></i></a>" +		
+						    	"<a class='btn' data-wysihtml5-command='insertUnorderedList' title='Unordered List'><i class='icon-list'></i></a>" +
+							    "<a class='btn' data-wysihtml5-command='insertOrderedList' title='Ordered List'><i class='icon-th-list'></i></a>" +
+							    "<a class='btn' data-wysihtml5-command='Indent' title='Indent'><i class='icon-indent-left'></i></a>" + 
+							    "<a class='btn' data-wysihtml5-command='Outdent' title='Outdent'><i class='icon-indent-right'></i></a>" + 							    
 							"</div>" +
 						"</li>"
 	};
@@ -33,11 +35,34 @@
 		"lists": true
 	};
 
+	var parserRules = {
+		tags: {
+			b:  {},
+			i:  {},
+			br: {},
+			ol: {},
+			ul: {},
+			li: {},
+			h1: {},
+			h2: {},
+			a:  {
+				set_attributes: {
+					target: "_blank",
+					rel:    "nofollow"
+				},
+				check_attributes: {
+					href:   "url" // important to avoid XSS
+				}
+			}
+		}
+	};
+
 	var Wysihtml5 = function(el, options) {
 		this.el = el;
 		this.toolbar = this.createToolbar(el, options || defaultOptions);
 		this.editor =  new wysi.Editor(this.el.attr('id'), {
-    		toolbar: this.toolbar.attr('id')
+    		toolbar: this.toolbar.attr('id'),
+		parserRules: parserRules
   		});
   		
   		$('iframe.wysihtml5-sandbox').each(function(i, el){
@@ -57,7 +82,7 @@
 					id : el.attr('id') + "-wysihtml5-toolbar",
 					class : "wysihtml5-toolbar",
 					style: "display:none"
-				}).button();
+				});
 
 			for(var key in defaultOptions) {
 				var value;
