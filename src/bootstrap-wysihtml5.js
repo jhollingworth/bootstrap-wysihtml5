@@ -16,9 +16,9 @@
 							"<div class='btn-group'>" 
 							    + "<a class='btn' data-wysihtml5-command='bold' title='CTRL+B'>Bold</a>" 
 							    + "<a class='btn' data-wysihtml5-command='italic' title='CTRL+I'>Italic</a>" 
-							    //+ "<a class='btn' data-wysihtml5-command='underline' title='CTRL+U'>Underline</a>" +
-							+ "</div>" +
-						"</li>",
+							    //+ "<a class='btn' data-wysihtml5-command='underline' title='CTRL+U'>Underline</a>" 
+							+ "</div>" 
+						+ "</li>",
 		"lists": 		"<li>" 
 							+ "<div class='btn-group'>" 
 						    	+ "<a class='btn' data-wysihtml5-command='insertUnorderedList' title='Unordered List'><i class='icon-list'></i></a>" 
@@ -26,26 +26,35 @@
 							    + "<a class='btn' data-wysihtml5-command='Outdent' title='Outdent'><i class='icon-indent-right'></i></a>"  							    
 							    + "<a class='btn' data-wysihtml5-command='Indent' title='Indent'><i class='icon-indent-left'></i></a>" 
 							+ "</div>" 
+						+ "</li>",
+
+		"html": 
+						"<li>"
+							+ "<div class='btn-group'>"
+								+ "<a class='btn' data-wysihtml5-command='change_view' title='Edit HTML'><i class='icon-pencil'></i></a>" 
+							+ "</div>"
 						+ "</li>"
 	};
 	
 	var defaultOptions = {
 		"font-styles": true,
 		"emphasis": true,
-		"lists": true
+		"lists": true,
+		"html": true
 	};
 
 	var parserRules = {
 		tags: {
-			b:  {},
-			i:  {},
-			br: {},
-			ol: {},
-			ul: {},
-			li: {},
-			h1: {},
-			h2: {},
-			a:  {
+			"b":  {},
+			"i":  {},
+			"br": {},
+			"ol": {},
+			"ul": {},
+			"li": {},
+			"h1": {},
+			"h2": {},
+			"u": 1,
+			"a":  {
 				set_attributes: {
 					target: "_blank",
 					rel:    "nofollow"
