@@ -28,7 +28,7 @@
 						+ "</div>" 
 					+ "</li>",
 
-		"media": 	"<li>" 
+		"link": 	"<li>" 
 						
 						+ "<div class='bootstrap-wysihtml5-insert-link-modal modal hide fade'>"
 							+ "<div class='modal-header'>"
@@ -44,6 +44,12 @@
 							+ "</div>"
 						+ "</div>"
 
+				    	+ "<a class='btn' data-wysihtml5-command='createLink' title='Link'><i class='icon-share'></i></a>" 
+
+					+ "</li>",
+
+			"image": "<li>" 
+						
 						+ "<div class='bootstrap-wysihtml5-insert-image-modal modal hide fade'>"
 							+ "<div class='modal-header'>"
 							+ "<a class='close' data-dismiss='modal'>×</a>"
@@ -58,10 +64,7 @@
 							+ "</div>"
 						+ "</div>"
 
-						+ "<div class='btn-group'>"
-				    		+ "<a class='btn' data-wysihtml5-command='createLink' title='Link'><i class='icon-share'></i></a>" 
-							//+ "<a class='btn' data-wysihtml5-command='insertImage' title='Insert image'><i class='icon-picture'></i></a>" 
-						+ "</div>"
+						+ "<a class='btn' data-wysihtml5-command='insertImage' title='Insert image'><i class='icon-picture'></i></a>" 
 
 					+ "</li>",
 
@@ -78,7 +81,8 @@
 		"emphasis": true,
 		"lists": true,
 		"html": false,
-		"media": true,
+		"link": true,
+		"image": false,
 		events: {},
 		parserRules: {
 			tags: {
@@ -157,9 +161,9 @@
 		createToolbar: function(el, options) {
 			var self = this;
 			var toolbar = $("<ul/>", {
-				id : el.attr('id') + "-wysihtml5-toolbar",
+				'id' : el.attr('id') + "-wysihtml5-toolbar",
 				'class' : "wysihtml5-toolbar",
-				style: "display:none"
+				'style': "display:none"
 			});
 
 			for(var key in defaultOptions) {
@@ -180,8 +184,12 @@
 						this.initHtml(toolbar);
 					}
 
-					if(key == "media") {
-						this.initMedia(toolbar);
+					if(key == "link") {
+						this.initInsertLink(toolbar);
+					}
+
+					if(key == "image") {
+						this.initInsertImage(toolbar);
 					}
 				}
 			}
@@ -203,11 +211,6 @@
 			toolbar.find(changeViewSelector).click(function(e) {
 				toolbar.find('a.btn').not(changeViewSelector).toggleClass('disabled');
 			});
-		},
-
-		initMedia: function(toolbar) { 
-			this.initInsertLink(toolbar);
-			this.initInsertImage(toolbar);
 		},
 
 		initInsertImage: function(toolbar) {
