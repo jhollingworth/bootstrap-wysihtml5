@@ -60,7 +60,7 @@
 
 						+ "<div class='btn-group'>"
 				    		+ "<a class='btn' data-wysihtml5-command='createLink' title='Link'><i class='icon-share'></i></a>" 
-							+ "<a class='btn' data-wysihtml5-command='insertImage' title='Insert image'><i class='icon-picture'></i></a>" 
+							//+ "<a class='btn' data-wysihtml5-command='insertImage' title='Insert image'><i class='icon-picture'></i></a>" 
 						+ "</div>"
 
 					+ "</li>",
@@ -91,6 +91,14 @@
 				"h1": {},
 				"h2": {},
 				"u": 1,
+				"img": {
+					"check_attributes": {
+			            "width": "numbers",
+			            "alt": "alt",
+			            "src": "url",
+			            "height": "numbers"
+			        }
+				}
 				"a":  {
 					set_attributes: {
 						target: "_blank",
