@@ -98,7 +98,7 @@
 			            "src": "url",
 			            "height": "numbers"
 			        }
-				}
+				},
 				"a":  {
 					set_attributes: {
 						target: "_blank",
@@ -158,7 +158,7 @@
 			var self = this;
 			var toolbar = $("<ul/>", {
 				id : el.attr('id') + "-wysihtml5-toolbar",
-				class : "wysihtml5-toolbar",
+				'class' : "wysihtml5-toolbar",
 				style: "display:none"
 			});
 
