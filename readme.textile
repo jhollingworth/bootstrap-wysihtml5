@@ -16,19 +16,20 @@ gem install bootstrap-wysihtml5-rails
 
 Otherwise, download "the latest version of bootstrap-wysihtml5":https://github.com/jhollingworth/bootstrap-wysihtml5/downloads. Make sure to include jquery, bootstrap.css, bootstrap.js, glyphicons-halflings.png, wysihtml5-0.3.0_rc2.js if they aren't in your project already.
 
-h2. Usage
+h2. Files to reference
 
 <pre>
-
-<!-- Files to reference !-->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5.css"></link>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"></link>
 <script src="js/wysihtml5-0.3.0_rc2.js"></script>
 <script src="js/jquery-1.7.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-wysihtml5.js"></script>
+</pre>
 
-<!-- Usage !-->
+h2. Usage
+
+<pre>
 <textarea id="some-textarea" placeholder="Enter text ..."></textarea>
 <script type="text/javascript">
 	$('#some-textarea').wysihtml5();
