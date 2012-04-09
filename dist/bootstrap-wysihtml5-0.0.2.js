@@ -56,7 +56,7 @@
 							  + "<h3>Insert Image</h3>"
 							+ "</div>"
 							+ "<div class='modal-body'>"
-							  + "<input value='http://' class='bootstrap-wysihtml5-insert-link-url input-xlarge'>"
+							  + "<input value='http://' class='bootstrap-wysihtml5-insert-image-url input-xlarge'>"
 							+ "</div>"
 							+ "<div class='modal-footer'>"
 							  + "<a href='#' class='btn' data-dismiss='modal'>Cancel</a>"
@@ -130,8 +130,6 @@
 			   }
 			});
 		});
-
-
 	};
 
 	Wysihtml5.prototype = {
@@ -218,15 +216,12 @@
 			var insertImageModal = toolbar.find('.bootstrap-wysihtml5-insert-image-modal');
 			var urlInput = insertImageModal.find('.bootstrap-wysihtml5-insert-image-url');
 			var insertButton = insertImageModal.find('a.btn-primary');
+			var initialValue = urlInput.val();
 
 			var insertImage = function() { 
 				var url = urlInput.val();
-				urlInput.val('');
-				self.editor.composer.commands.exec("createLink", { 
-					href: url, 
-					target: "_blank", 
-					rel: "nofollow" 
-				});
+				urlInput.val(initialValue);
+				self.editor.composer.commands.exec("insertImage", url);
 			};
 			
 			urlInput.keypress(function(e) {
