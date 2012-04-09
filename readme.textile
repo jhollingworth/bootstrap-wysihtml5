@@ -14,7 +14,7 @@ If you are using rails use the "bootstrap-wysihtml5-rails gem":http://rubygems.o
 gem install bootstrap-wysihtml5-rails
 </pre>
 
-Otherwise, download "the latest version of bootstrap-wysihtml5":https://github.com/jhollingworth/bootstrap-wysihtml5/downloads. Make sure to include jquery, bootstrap.css, bootstrap.js, glyphicons-halflings.png, wysihtml5-0.3.0_rc2.js if they aren't in your project already.
+Otherwise, download "the latest version of bootstrap-wysihtml5":https://github.com/jhollingworth/bootstrap-wysihtml5/downloads.
 
 h2. Files to reference
 
