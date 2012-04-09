@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler'
+require 'fileutils'
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -7,9 +8,18 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
+
+ROOT = File.dirname(__FILE__)
+
 require 'rake'
+require 'uglifier'
 
+task :minify do
+     version = File.open(File.join(ROOT, 'VERSION')).read
+     output_path = File.join(ROOT, "dist")
 
-task :compress do 
-	
+     minified_js = Uglifier.compile(File.read(File.join('src', 'bootstrap-wysihtml5.js')))
+     minified_js_path = File.join(output_path, "bootstrap-wysihtml5-#{version}.min.js")
+
+     File.open(minified_js_path, 'w') { |f| f.write(minified_js) } 
 end

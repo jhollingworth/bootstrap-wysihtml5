@@ -82,7 +82,7 @@
 		"lists": true,
 		"html": false,
 		"link": true,
-		"image": false,
+		"image": true,
 		events: {},
 		parserRules: {
 			tags: {
