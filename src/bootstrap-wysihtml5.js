@@ -243,6 +243,7 @@
 
 			toolbar.find('a[data-wysihtml5-command=insertImage]').click(function() {
 				insertImageModal.modal('show');
+				return false;
 			});
 		},
 
@@ -283,6 +284,7 @@
 
 			toolbar.find('a[data-wysihtml5-command=createLink]').click(function() {
 				insertLinkModal.modal('show');
+				return false;
 			});
 		}
 	};
