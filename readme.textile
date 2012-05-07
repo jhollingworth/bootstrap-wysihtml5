@@ -76,6 +76,6 @@ $('#some-textarea').wysihtml5({
 You can access the wysihtml5 editor object like this:
 
 <pre>
-var wysihtml5Editor = $('#some-textarea').wysihtml5().editor;
+var wysihtml5Editor = $('#some-textarea').wysihtml5().data("wysihtml5").editor;
 wysihtml5Editor.composer.commands.exec("bold");
 </pre>
