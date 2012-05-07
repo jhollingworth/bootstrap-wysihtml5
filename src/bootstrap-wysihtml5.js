@@ -32,7 +32,7 @@
 						
 						+ "<div class='bootstrap-wysihtml5-insert-link-modal modal hide fade'>"
 							+ "<div class='modal-header'>"
-							+ "<a class='close' data-dismiss='modal'>×</a>"
+							+ "<a class='close' data-dismiss='modal'>&times;</a>"
 							  + "<h3>Insert Link</h3>"
 							+ "</div>"
 							+ "<div class='modal-body'>"
@@ -52,7 +52,7 @@
 						
 						+ "<div class='bootstrap-wysihtml5-insert-image-modal modal hide fade'>"
 							+ "<div class='modal-header'>"
-							+ "<a class='close' data-dismiss='modal'>×</a>"
+							+ "<a class='close' data-dismiss='modal'>&times;</a>"
 							  + "<h3>Insert Image</h3>"
 							+ "</div>"
 							+ "<div class='modal-body'>"
