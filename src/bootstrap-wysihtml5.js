@@ -113,7 +113,8 @@
 					}
 				}
 			}
-		}
+		},
+		stylesheets: []
 	};
 
 	var Wysihtml5 = function(el, options) {
@@ -135,26 +136,32 @@
 	Wysihtml5.prototype = {
 		constructor: Wysihtml5,
 
-		createEditor: function(options) {
-			var parserRules = defaultOptions.parserRules; 
+    createEditor: function(options) {
+      var parserRules = defaultOptions.parserRules; 
+      var stylesheets = defaultOptions.stylesheets;
 
-			if(options && options.parserRules) {
-				parserRules = options.parserRules;
-			}
-				
-			var editor = new wysi.Editor(this.el.attr('id'), {
-	    		toolbar: this.toolbar.attr('id'),
-				parserRules: parserRules
-	  		});
+      if(options && options.parserRules) {
+        parserRules = options.parserRules;
+      }
 
-	  		if(options && options.events) {
-				for(var eventName in options.events) {
-					editor.on(eventName, options.events[eventName]);
-				}
-			}	
+      if (options && options.stylesheets) {
+        stylesheets = options.stylesheets;
+      }
 
-	  		return editor;
-		},
+      var editor = new wysi.Editor(this.el.attr('id'), {
+        toolbar: this.toolbar.attr('id'),
+        parserRules: parserRules,
+        stylesheets: stylesheets
+      });
+
+      if(options && options.events) {
+        for(var eventName in options.events) {
+          editor.on(eventName, options.events[eventName]);
+        }
+      }  
+
+      return editor;
+    },
 		
 		createToolbar: function(el, options) {
 			var self = this;
