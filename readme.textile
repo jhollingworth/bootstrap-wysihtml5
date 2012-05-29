@@ -58,6 +58,14 @@ $('#some-textarea').wysihtml5({
 });
 </pre>
 
+It is possible to supply a number of stylesheets for inclusion in the editor `<iframe>`:
+
+<pre>
+$('#some-textarea').wysihtml5({
+	"stylesheets": ["/path/to/editor.css"]
+});
+</pre>
+
 Wysihtml5 exposes a "number of events":https://github.com/xing/wysihtml5/wiki/Events. You can hook into these events when initialising the editor:
 
 <pre>
