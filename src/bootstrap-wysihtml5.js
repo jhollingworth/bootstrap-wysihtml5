@@ -148,8 +148,8 @@
         stylesheets = options.stylesheets;
       }
 
-      var editor = new wysi.Editor(this.el.attr('id'), {
-        toolbar: this.toolbar.attr('id'),
+      var editor = new wysi.Editor(this.el[0], {
+        toolbar: this.toolbar[0],
         parserRules: parserRules,
         stylesheets: stylesheets
       });
@@ -166,7 +166,6 @@
 		createToolbar: function(el, options) {
 			var self = this;
 			var toolbar = $("<ul/>", {
-				'id' : el.attr('id') + "-wysihtml5-toolbar",
 				'class' : "wysihtml5-toolbar",
 				'style': "display:none"
 			});
