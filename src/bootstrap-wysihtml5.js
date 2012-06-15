@@ -130,22 +130,10 @@
         constructor: Wysihtml5,
 
         createEditor: function(options) {
-            var parserRules = defaultOptions.parserRules;
-            var stylesheets = defaultOptions.stylesheets;
+            options = $.extend(defaultOptions, options || {});
+		    options.toolbar = this.toolbar[0];
 
-            if(options && options.parserRules) {
-                parserRules = options.parserRules;
-            }
-
-            if (options && options.stylesheets) {
-                stylesheets = options.stylesheets;
-            }
-
-            var editor = new wysi.Editor(this.el[0], {
-                toolbar: this.toolbar[0],
-                parserRules: parserRules,
-                stylesheets: stylesheets
-            });
+		    var editor = new wysi.Editor(this.el[0], options);
 
             if(options && options.events) {
                 for(var eventName in options.events) {
