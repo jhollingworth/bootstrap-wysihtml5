@@ -228,6 +228,9 @@
 
             toolbar.find('a[data-wysihtml5-command=insertImage]').click(function() {
                 insertImageModal.modal('show');
+                insertImageModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
+					e.stopPropagation();
+				});
                 return false;
             });
         },
@@ -269,8 +272,13 @@
 
             toolbar.find('a[data-wysihtml5-command=createLink]').click(function() {
                 insertLinkModal.modal('show');
+                insertLinkModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
+					e.stopPropagation();
+				});
                 return false;
             });
+
+
         }
     };
 
