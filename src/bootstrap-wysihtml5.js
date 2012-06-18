@@ -86,6 +86,7 @@
                 "li": {},
                 "h1": {},
                 "h2": {},
+                "blockquote": {},
                 "u": 1,
                 "img": {
                     "check_attributes": {
