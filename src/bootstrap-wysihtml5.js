@@ -181,7 +181,8 @@
             }
 
             toolbar.find("a[data-wysihtml5-command='formatBlock']").click(function(e) {
-                var el = $(e.srcElement);
+                var target = e.target || e.srcElement;
+                var el = $(target);
                 self.toolbar.find('.current-font').text(el.html());
             });
 
