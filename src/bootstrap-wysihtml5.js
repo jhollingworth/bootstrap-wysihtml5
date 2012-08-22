@@ -166,17 +166,23 @@
                 if(value === true) {
                     toolbar.append(templates[key]);
 
-                    if(key == "html") {
+                    if(key === "html") {
                         this.initHtml(toolbar);
                     }
 
-                    if(key == "link") {
+                    if(key === "link") {
                         this.initInsertLink(toolbar);
                     }
 
-                    if(key == "image") {
+                    if(key === "image") {
                         this.initInsertImage(toolbar);
                     }
+                }
+            }
+
+            if(options.toolbar) {
+                for(key in options.toolbar) {
+                   toolbar.append(options.toolbar[key]);
                 }
             }
 
