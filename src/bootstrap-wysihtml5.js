@@ -67,6 +67,25 @@
                                "<div class='btn-group'>" +
                                    "<a class='btn' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'><i class='icon-pencil'></i></a>" +
                                "</div>" +
+                           "</li>",
+
+            "color":       "<li class='dropdown'>" +
+                               "<a class='btn dropdown-toggle' data-toggle='dropdown' href='#'>" +
+                                   "<span class='current-color'>Black</span>&nbsp;<b class='caret'></b>" +
+                               "</a>" +
+                               "<ul class='dropdown-menu'>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='black'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='black'>Black</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='silver'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='silver'>Silver</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='gray'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='gray'>Gray</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='maroon'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='maroon'>Maroon</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='red'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='red'>Red</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='purple'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='purple'>Purple</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='green'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='green'>Green</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='olive'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='olive'>Olive</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='navy'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='navy'>Navy</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='blue'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='blue'>Blue</a></li>" +
+                                   "<li><div class='wysihtml5-colors' data-wysihtml5-command-value='orange'></div><a class='wysihtml5-colors-title' data-wysihtml5-command='foreColor' data-wysihtml5-command-value='orange'>Orange</a></li>" +
+                               "</ul>" +
                            "</li>"
         };
         return tpl[key];
@@ -79,8 +98,28 @@
         "html": false,
         "link": true,
         "image": true,
+        "color": true,
         events: {},
         parserRules: {
+            classes: {
+              // (path_to_project/lib/css/wysiwyg-color.css)
+              "wysiwyg-color-silver" : 1,
+              "wysiwyg-color-gray" : 1,
+              "wysiwyg-color-white" : 1,
+              "wysiwyg-color-maroon" : 1,
+              "wysiwyg-color-red" : 1,
+              "wysiwyg-color-purple" : 1,
+              "wysiwyg-color-fuchsia" : 1,
+              "wysiwyg-color-green" : 1,
+              "wysiwyg-color-lime" : 1,
+              "wysiwyg-color-olive" : 1,
+              "wysiwyg-color-yellow" : 1,
+              "wysiwyg-color-navy" : 1,
+              "wysiwyg-color-blue" : 1,
+              "wysiwyg-color-teal" : 1,
+              "wysiwyg-color-aqua" : 1,
+              "wysiwyg-color-orange" : 1,
+            },
             tags: {
                 "b":  {},
                 "i":  {},
@@ -108,10 +147,12 @@
                     check_attributes: {
                         href:   "url" // important to avoid XSS
                     }
-                }
+                },
+                "span": 1,
+                "div": 1
             }
         },
-        stylesheets: [],
+        stylesheets: ["./lib/css/wysiwyg-color.css"], // (path_to_project/lib/css/wysiwyg-color.css)
         locale: "en"
     };
 
@@ -195,6 +236,12 @@
                 var target = e.target || e.srcElement;
                 var el = $(target);
                 self.toolbar.find('.current-font').text(el.html());
+            });
+
+            toolbar.find("a[data-wysihtml5-command='foreColor']").click(function(e) {
+                var target = e.target || e.srcElement;
+                var el = $(target);
+                self.toolbar.find('.current-color').text(el.html());
             });
 
             this.el.before(toolbar);
