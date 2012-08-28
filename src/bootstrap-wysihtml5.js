@@ -156,7 +156,7 @@
                 'class' : "wysihtml5-toolbar",
                 'style': "display:none"
             });
-
+	    var culture = options.locale || defaultOptions.locale || "en";
             for(var key in defaultOptions) {
                 var value = false;
 
@@ -169,7 +169,7 @@
                 }
 
                 if(value === true) {
-                    toolbar.append(templates(key, locale[options.locale]));
+                    toolbar.append(templates(key, locale[culture]));
 
                     if(key === "html") {
                         this.initHtml(toolbar);
