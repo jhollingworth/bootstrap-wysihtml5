@@ -12,6 +12,7 @@
                                    "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div'>" + locale.font_styles.normal + "</a></li>" +
                                    "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1'>" + locale.font_styles.h1 + "</a></li>" +
                                    "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2'>" + locale.font_styles.h2 + "</a></li>" +
+                                   "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3'>" + locale.font_styles.h3 + "</a></li>" +
                                "</ul>" +
                            "</li>",
             "emphasis":    "<li>" +
@@ -90,6 +91,7 @@
                 "li": {},
                 "h1": {},
                 "h2": {},
+                "h3": {},
                 "blockquote": {},
                 "u": 1,
                 "img": {
@@ -309,7 +311,8 @@
             font_styles: {
                 normal: "Normal text",
                 h1: "Heading 1",
-                h2: "Heading 2"
+                h2: "Heading 2",
+                h3: "Heading 3"
             },
             emphasis: {
                 bold: "Bold",
