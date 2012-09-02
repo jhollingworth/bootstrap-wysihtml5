@@ -179,7 +179,7 @@
         constructor: Wysihtml5,
 
         createEditor: function(options) {
-            options = $.extend(defaultOptions, options || {});
+          options = $.extend({}, defaultOptions, options || {});
 		    options.toolbar = this.toolbar[0];
 
 		    var editor = new wysi.Editor(this.el[0], options);
