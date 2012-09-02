@@ -5,7 +5,11 @@ if (wysihtml5.browser.supportsCommand(document, "insertHTML")) {
       this.textareaElement        = document.createElement("textarea");
       this.textareaElement.value  = "1";
 
-      document.body.appendChild(this.textareaElement);
+      this.form = document.createElement("form");
+      this.form.onsubmit = function() { return false; };
+      this.form.appendChild(this.textareaElement);
+
+      document.body.appendChild(this.form);
     },
 
     teardown: function() {
@@ -13,17 +17,17 @@ if (wysihtml5.browser.supportsCommand(document, "insertHTML")) {
       while (leftover = document.querySelector("iframe.wysihtml5-sandbox, input[name='_wysihtml5_mode']")) {
         leftover.parentNode.removeChild(leftover);
       }
-      document.body.removeChild(this.textareaElement);
+      this.form.parentNode.removeChild(this.form);
     },
-    
+
     triggerUndo: function(editor) {
       this.triggerKey(editor, 90);
     },
-    
+
     triggerRedo: function(editor) {
       this.triggerKey(editor, 89);
     },
-    
+
     triggerKey: function(editor, keyCode) {
       var event;
       try {
@@ -42,9 +46,12 @@ if (wysihtml5.browser.supportsCommand(document, "insertHTML")) {
 
   asyncTest("Basic test", function() {
     expect(5);
-    
-    var that   = this,
-        editor = new wysihtml5.Editor(this.textareaElement);
+
+    var that   = this;
+    // editor = new wysihtml5.Editor(this.textareaElement);
+    $(this.textareaElement).wysihtml5();
+    var editor = $(this.textareaElement).data('wysihtml5').editor;
+
     editor.on("load", function() {
       editor.setValue("1 2").fire("newword:composer");
       editor.setValue("1 2 3").fire("newword:composer");
@@ -65,21 +72,24 @@ if (wysihtml5.browser.supportsCommand(document, "insertHTML")) {
       that.triggerUndo(editor);
       that.triggerUndo(editor);
       equal(editor.getValue(), "1");
-      
+
       start();
     });
   });
-  
-  
+
+
   asyncTest("Test commands", function() {
     expect(3);
-    
-    var that   = this,
-        editor = new wysihtml5.Editor(this.textareaElement);
+
+    var that   = this;
+    // editor = new wysihtml5.Editor(this.textareaElement);
+    $(this.textareaElement).wysihtml5();
+    var editor = $(this.textareaElement).data('wysihtml5').editor;
+
     editor.on("load", function() {
       editor.setValue("<b>1</b>").fire("beforecommand:composer");
       editor.setValue("<i><b>1</b></i>").fire("beforecommand:composer");
-      
+
       that.triggerUndo(editor);
       equal(editor.getValue(), "<b>1</b>");
       that.triggerRedo(editor);
@@ -87,7 +97,7 @@ if (wysihtml5.browser.supportsCommand(document, "insertHTML")) {
       that.triggerUndo(editor);
       that.triggerUndo(editor);
       equal(editor.getValue(), "1");
-      
+
       start();
     });
   });
