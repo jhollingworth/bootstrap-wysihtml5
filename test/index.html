@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-git.css">
 <link rel="stylesheet" href="../src/bootstrap-wysihtml5.css">
-<!-- link rel="stylesheet" href="../lib/css/bootstrap.css" -->
+<link rel="stylesheet" href="../lib/css/bootstrap.css">
 
 <script src="http://code.jquery.com/qunit/qunit-git.js"></script>
 
@@ -18,38 +18,13 @@
 <!-- script src="../lib/js/bootstrap.min.js"></script -->
 <script src="../src/bootstrap-wysihtml5.js"><script>
 
-
 <script src="browser_test.js"></script>
 <script src="incompatible_test.js"></script>
 
 <script>
   if (wysihtml5.browser.supported()) {
     document.write(
-      '<script src="assert/html_equal_test.js"><\/script>'               +
-      '<script src="lang/array_test.js"><\/script>'                       +
-      '<script src="lang/object_test.js"><\/script>'                      +
-      '<script src="lang/string_test.js"><\/script>'                      +
-      '<script src="dom/auto_link_test.js"><\/script>'                    +
-      '<script src="dom/contains_test.js"><\/script>'                     +
-      '<script src="dom/convert_to_list_test.js"><\/script>'              +
-      '<script src="dom/copy_styles_test.js"><\/script>'                  +
-      '<script src="dom/copy_attributes_test.js"><\/script>'              +
-      '<script src="dom/delegate_test.js"><\/script>'                     +
-      '<script src="dom/sandbox_test.js"><\/script>'                      +
-      '<script src="dom/observe_test.js"><\/script>'                      +
-      '<script src="dom/get_as_dom_test.js"><\/script>'                   +
-      '<script src="dom/get_parent_element_test.js"><\/script>'           +
-      '<script src="dom/get_style_test.js"><\/script>'                    +
-      '<script src="dom/has_element_with_tag_name_test.js"><\/script>'    +
-      '<script src="dom/has_element_with_class_name_test.js"><\/script>'  +
-      '<script src="dom/insert_css_test.js"><\/script>'                   +
-      '<script src="dom/resolve_list_test.js"><\/script>'                 +
-      '<script src="dom/rename_element_test.js"><\/script>'               +
-      '<script src="dom/set_styles_test.js"><\/script>'                   +
-      '<script src="dom/set_attributes_test.js"><\/script>'               +
-      '<script src="dom/parse_test.js"><\/script>'                        +
-      '<script src="quirks/clean_pasted_html_test.js"><\/script>'         +
-      '<script src="undo_manager_test.js"><\/script>'         +
+      '<script src="undo_manager_test.js"><\/script>' +
       '<script src="editor_test.js"><\/script>'
     );
   }
