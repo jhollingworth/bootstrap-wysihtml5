@@ -1,0 +1,18 @@
+To run the tests, just open index.html in your wysihtml5-compatible
+browser.
+
+The following files are ported from the wyshtml5 project's unit tests:
+
+browser_test.js
+incompatible_test.js
+editor_test.js
+undo_manager.js
+
+These files should be left more or less alone, for purposes of
+maintainability.  Put new tests in the bootstrap_wysihtml5/ directory,
+and modify index.html to reference any new files you create.
+
+If you're testing the underlying wysihtml5 library rather the
+bootstrap_wysihtml5 jquery plugin wrapper around that library, then
+you're probably contributing to the wrong project :).  See
+https://github.com/xing/wysihtml5 for that.
