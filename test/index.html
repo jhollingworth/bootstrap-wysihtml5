@@ -16,7 +16,7 @@
 
 <script src="../lib/js/jquery-1.7.2.min.js"></script>
 <!-- script src="../lib/js/bootstrap.min.js"></script -->
-<script src="../src/bootstrap-wysihtml5.js"><script>
+<script src="../src/bootstrap-wysihtml5.js"></script>
 
 <script src="browser_test.js"></script>
 <script src="incompatible_test.js"></script>
@@ -25,7 +25,8 @@
   if (wysihtml5.browser.supported()) {
     document.write(
       '<script src="undo_manager_test.js"><\/script>' +
-      '<script src="editor_test.js"><\/script>'
+      '<script src="editor_test.js"><\/script>' +
+      '<script src="bootstrap_wysihtml5/parserRules_test.js"><\/script>'
     );
   }
 </script>
