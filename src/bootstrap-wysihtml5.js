@@ -289,11 +289,18 @@
             });
 
             toolbar.find('a[data-wysihtml5-command=insertImage]').click(function() {
+              var activeButton = $(this).hasClass("wysihtml5-command-active");
+
+              if (!activeButton) {
                 insertImageModal.modal('show');
                 insertImageModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
 					       e.stopPropagation();
 				        });
                 return false;
+              }
+              else {
+                return true;
+              }
             });
         },
 
@@ -333,11 +340,18 @@
             });
 
             toolbar.find('a[data-wysihtml5-command=createLink]').click(function() {
+              var activeButton = $(this).hasClass("wysihtml5-command-active");
+              
+              if (!activeButton) {
                 insertLinkModal.modal('show');
                 insertLinkModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
         					e.stopPropagation();
         				});
                 return false;
+              }
+              else {
+                return true;
+              }
             });
         }
     };
