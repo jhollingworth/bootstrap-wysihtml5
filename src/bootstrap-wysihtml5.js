@@ -27,7 +27,7 @@
                                    "<a class='btn' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "'><i class='icon-list'></i></a>" +
                                    "<a class='btn' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "'><i class='icon-th-list'></i></a>" +
                                    "<a class='btn' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "'><i class='icon-indent-right'></i></a>" +
-                                   "<a class='btn' data-wysihtml5-command='Indent' title='" + locale.lists.indered + "'><i class='icon-indent-left'></i></a>" +
+                                   "<a class='btn' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "'><i class='icon-indent-left'></i></a>" +
                                "</div>" +
                            "</li>",
             "link":        "<li>" +
