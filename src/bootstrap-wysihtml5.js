@@ -343,7 +343,7 @@
               var activeButton = $(this).hasClass("wysihtml5-command-active");
               
               if (!activeButton) {
-                insertLinkModal.modal('show');
+                insertLinkModal.append('body').modal('show');
                 insertLinkModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
         					e.stopPropagation();
         				});
