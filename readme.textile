@@ -88,3 +88,17 @@ You can access the wysihtml5 editor object like this:
 var wysihtml5Editor = $('#some-textarea').wysihtml5().data("wysihtml5").editor;
 wysihtml5Editor.composer.commands.exec("bold");
 </pre>
+
+
+h2. I18n
+
+You can use Bootstrap-wysihtml5 in other languages. There are some translations available in the <pre>src/locales</pre> directory. You can include your desired one after the plugin and pass its key to the editor. Example:
+
+<pre>
+	<script src="src/locales/bootstrap-wysihtml5.pt-BR.js"></script>
+  <script type="text/javascript">
+    $('#some-textarea').wysihtml5({locale: "pt-BR"});
+  </script>
+</pre>
+
+It is possible to use custom translations as well. Just add a new key to <pre>$.fn.wysihtml5.locale</pre> before calling the editor constructor.
