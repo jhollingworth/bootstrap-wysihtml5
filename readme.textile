@@ -95,10 +95,10 @@ h2. I18n
 You can use Bootstrap-wysihtml5 in other languages. There are some translations available in the src/locales directory. You can include your desired one after the plugin and pass its key to the editor. Example:
 
 <pre>
-	<script src="src/locales/bootstrap-wysihtml5.pt-BR.js"></script>
-  <script type="text/javascript">
-    $('#some-textarea').wysihtml5({locale: "pt-BR"});
-  </script>
+<script src="src/locales/bootstrap-wysihtml5.pt-BR.js"></script>
+<script type="text/javascript">
+  $('#some-textarea').wysihtml5({locale: "pt-BR"});
+</script>
 </pre>
 
 It is possible to use custom translations as well. Just add a new key to $.fn.wysihtml5.locale before calling the editor constructor.
