@@ -92,7 +92,7 @@ wysihtml5Editor.composer.commands.exec("bold");
 
 h2. I18n
 
-You can use Bootstrap-wysihtml5 in other languages. There are some translations available in the <pre>src/locales</pre> directory. You can include your desired one after the plugin and pass its key to the editor. Example:
+You can use Bootstrap-wysihtml5 in other languages. There are some translations available in the src/locales directory. You can include your desired one after the plugin and pass its key to the editor. Example:
 
 <pre>
 	<script src="src/locales/bootstrap-wysihtml5.pt-BR.js"></script>
@@ -101,4 +101,4 @@ You can use Bootstrap-wysihtml5 in other languages. There are some translations 
   </script>
 </pre>
 
-It is possible to use custom translations as well. Just add a new key to <pre>$.fn.wysihtml5.locale</pre> before calling the editor constructor.
+It is possible to use custom translations as well. Just add a new key to $.fn.wysihtml5.locale before calling the editor constructor.
