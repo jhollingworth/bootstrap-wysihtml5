@@ -49,21 +49,7 @@ h2. Options
 An options object can be passed in to .wysihtml5() to configure the editor:
 
 <pre>
-$('#some-textarea').wysihtml5({someOption: 23})
-</pre>
-
-Your options will be added to the defaults via a shallow copy.  (see "jQuery.extend()":http://api.jquery.com/jQuery.extend/ for details). You can use a deep copy instead (which is probably what you want if you're adding tags or classes to parserRules), you can use deepExtend:
-
-<pre>
-$('#some-textarea').wysihtml5('deepExtend', {
-  someOption: false,
-  parserRules: {
-    tags: {
-      blink: true
-    }
-  }
-  ...
-});
+$('#some-textarea').wysihtml5({someOption: 23, ...})
 </pre>
 
 h3. Buttons
@@ -109,9 +95,13 @@ $('#some-textarea').wysihtml5({
 });
 </pre>
 
+h3. Shallow copy by default, deep on request
+
+Options you pass in will be added to the defaults via a shallow copy.  (see "jQuery.extend()":http://api.jquery.com/jQuery.extend/ for details). You can use a deep copy instead (which is probably what you want if you're adding tags or classes to parserRules) via 'deepExtend', as in the parserRules example below.
+
 h3. Parser Rules
 
-if you find the editor is stripping out tags or attributes you need, then you'll want to extend (or replace) parserRules.  This example extends the defaults to allow the strong and em tags, and the class "middle":
+if you find the editor is stripping out tags or attributes you need, then you'll want to extend (or replace) parserRules.  This example extends the defaults to allow the <code><strong></code> and <code><em></code> tags, and the class "middle":
 
 <pre>
 $('#some-textarea').wysihtml5('deepExtend', {
