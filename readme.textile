@@ -1,9 +1,6 @@
 h1. Overview
 
-Bootstrap-wysihtml5 is a javascript plugin that makes it easy to
-create simple, beautiful wysiwyg editors with the help of
-"wysihtml5":https://github.com/xing/wysihtml5 and "Twitter
-Bootstrap":http://twitter.github.com/bootstrap/.
+Bootstrap-wysihtml5 is a javascript plugin that makes it easy to create simple, beautiful wysiwyg editors with the help of "wysihtml5":https://github.com/xing/wysihtml5 and "Twitter Bootstrap":http://twitter.github.com/bootstrap/.
 
 h1. Examples
 
@@ -55,10 +52,7 @@ An options object can be passed in to .wysihtml5() to configure the editor:
 $('#some-textarea').wysihtml5({someOption: 23})
 </pre>
 
-Your options will be added to the defaults via a shallow copy.  (see
-"jQuery.extend()":http://api.jquery.com/jQuery.extend/ for details).
-You can use a deep copy instead (which is probably what you want if
-you're adding tags or classes to parserRules), you can use deepExtend:
+Your options will be added to the defaults via a shallow copy.  (see "jQuery.extend()":http://api.jquery.com/jQuery.extend/ for details). You can use a deep copy instead (which is probably what you want if you're adding tags or classes to parserRules), you can use deepExtend:
 
 <pre>
 $('#some-textarea').wysihtml5('deepExtend', {
@@ -119,6 +113,7 @@ h3. Parser Rules
 
 if you find the editor is stripping out tags or attributes you need, then you'll want to extend (or replace) parserRules.  This example extends the defaults to allow the strong and em tags, and the class "middle":
 
+<pre>
 $('#some-textarea').wysihtml5('deepExtend', {
   parserRules: {
     classes: {
@@ -130,14 +125,10 @@ $('#some-textarea').wysihtml5('deepExtend', {
     }
   }
 });
+</pre>
 
-There's quite a bit that can be done with parserRules; see
-"wysihtml5's advanced parser
-ruleset":https://github.com/xing/wysihtml5/blob/master/parser_rules/advanced.js
-
-bootstrap-wysihtml5's default parserRules can be found 
-"in the source":https://github.com/jhollingworth/bootstrap-wysihtml5/blob/master/src/bootstrap-wysihtml5.js
-(just search for 'parserRules' in the file).
+There's quite a bit that can be done with parserRules; see "wysihtml5's advanced parser
+ruleset":https://github.com/xing/wysihtml5/blob/master/parser_rules/advanced.js for detailss.  bootstrap-wysihtml5's default parserRules can be found "in the source":https://github.com/jhollingworth/bootstrap-wysihtml5/blob/master/src/bootstrap-wysihtml5.js (just search for 'parserRules' in the file).
 
 h3. Defaults
 
@@ -147,17 +138,13 @@ You can change bootstrap-wysihtml5's defaults by altering:
 $.fn.wysihtml5.defaultOptions
 </pre>
 
-this object has the same structure as the options object you pass in to
-.wysihtml5().  You can revert to the original defaults by calling:
+this object has the same structure as the options object you pass in to .wysihtml5().  You can revert to the original defaults by calling:
 
 <pre> 
 $(this).wysihtml5('resetDefaults') 
 </pre> 
 
-Operations on the defaults are not thread-safe; if you're
-going to change the defaults, you probably want to do it only once,
-after you load the bootstrap-wysihtml plugin and before you
-instantiate your edtiors.
+Operations on the defaults are not thread-safe; if you're going to change the defaults, you probably want to do it only once, after you load the bootstrap-wysihtml plugin and before you instantiate your edtiors.
 
 h2. The underlying wysihtml5 object
 
