@@ -102,71 +102,6 @@
         return tpl[key];
     };
 
-    var defaultOptions = {
-        "font-styles": true,
-        "color": false,
-        "emphasis": true,
-        "lists": true,
-        "html": false,
-        "link": true,
-        "image": true,
-        events: {},
-        parserRules: {
-            classes: {
-                // (path_to_project/lib/css/wysiwyg-color.css)
-                "wysiwyg-color-silver" : 1,
-                "wysiwyg-color-gray" : 1,
-                "wysiwyg-color-white" : 1,
-                "wysiwyg-color-maroon" : 1,
-                "wysiwyg-color-red" : 1,
-                "wysiwyg-color-purple" : 1,
-                "wysiwyg-color-fuchsia" : 1,
-                "wysiwyg-color-green" : 1,
-                "wysiwyg-color-lime" : 1,
-                "wysiwyg-color-olive" : 1,
-                "wysiwyg-color-yellow" : 1,
-                "wysiwyg-color-navy" : 1,
-                "wysiwyg-color-blue" : 1,
-                "wysiwyg-color-teal" : 1,
-                "wysiwyg-color-aqua" : 1,
-                "wysiwyg-color-orange" : 1,
-            },
-            tags: {
-                "b":  {},
-                "i":  {},
-                "br": {},
-                "ol": {},
-                "ul": {},
-                "li": {},
-                "h1": {},
-                "h2": {},
-                "h3": {},
-                "blockquote": {},
-                "u": 1,
-                "img": {
-                    "check_attributes": {
-                        "width": "numbers",
-                        "alt": "alt",
-                        "src": "url",
-                        "height": "numbers"
-                    }
-                },
-                "a":  {
-                    set_attributes: {
-                        target: "_blank",
-                        rel:    "nofollow"
-                    },
-                    check_attributes: {
-                        href:   "url" // important to avoid XSS
-                    }
-                },
-                "span": 1,
-                "div": 1
-            }
-        },
-        stylesheets: ["./lib/css/wysiwyg-color.css"], // (path_to_project/lib/css/wysiwyg-color.css)
-        locale: "en"
-    };
 
     var Wysihtml5 = function(el, options) {
         this.el = el;
@@ -189,7 +124,7 @@
         constructor: Wysihtml5,
 
         createEditor: function(options) {
-            options = $.extend({}, defaultOptions, options || {});
+            options = options || {};
             options.toolbar = this.toolbar[0];
 
             var editor = new wysi.Editor(this.el[0], options);
@@ -199,7 +134,6 @@
                     editor.on(eventName, options.events[eventName]);
                 }
             }
-
             return editor;
         },
 
@@ -366,14 +300,114 @@
         }
     };
 
-    $.fn.wysihtml5 = function (options) {
-        return this.each(function () {
-            var $this = $(this);
-            $this.data('wysihtml5', new Wysihtml5($this, options));
-        });
+    // these define our public api
+    var methods = {
+        resetDefaults: function() {
+            $.fn.wysihtml5.defaultOptions = $.extend(true, {}, $.fn.wysihtml5.defaultOptionsCache);
+        },
+        bypassDefaults: function(options) {
+            return this.each(function () {
+                var $this = $(this);
+                $this.data('wysihtml5', new Wysihtml5($this, options));
+            });
+        },
+        shallowExtend: function (options) {
+            var settings = $.extend({}, $.fn.wysihtml5.defaultOptions, options || {});
+            var that = this;
+            methods.bypassDefaults.apply(that, [settings]);
+        },
+        deepExtend: function(options) {
+            var settings = $.extend(true, {}, $.fn.wysihtml5.defaultOptions, options || {});
+            var that = this;
+            methods.bypassDefaults.apply(that, [settings]);
+        },
+        init: function(options) {
+            var that = this;
+            methods.shallowExtend.apply(that, [options]);
+        }
+    };
+
+    $.fn.wysihtml5 = function ( method ) {
+        if ( methods[method] ) {
+            return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof method === 'object' || ! method ) {
+            return methods.init.apply( this, arguments );
+        } else {
+            $.error( 'Method ' +  method + ' does not exist on jQuery.wysihtml5' );
+        }    
     };
 
     $.fn.wysihtml5.Constructor = Wysihtml5;
+
+    var defaultOptions = $.fn.wysihtml5.defaultOptions = {
+        "font-styles": true,
+        "color": false,
+        "emphasis": true,
+        "lists": true,
+        "html": false,
+        "link": true,
+        "image": true,
+        events: {},
+        parserRules: {
+            classes: {
+                // (path_to_project/lib/css/wysiwyg-color.css)
+                "wysiwyg-color-silver" : 1,
+                "wysiwyg-color-gray" : 1,
+                "wysiwyg-color-white" : 1,
+                "wysiwyg-color-maroon" : 1,
+                "wysiwyg-color-red" : 1,
+                "wysiwyg-color-purple" : 1,
+                "wysiwyg-color-fuchsia" : 1,
+                "wysiwyg-color-green" : 1,
+                "wysiwyg-color-lime" : 1,
+                "wysiwyg-color-olive" : 1,
+                "wysiwyg-color-yellow" : 1,
+                "wysiwyg-color-navy" : 1,
+                "wysiwyg-color-blue" : 1,
+                "wysiwyg-color-teal" : 1,
+                "wysiwyg-color-aqua" : 1,
+                "wysiwyg-color-orange" : 1,
+            },
+            tags: {
+                "b":  {},
+                "i":  {},
+                "br": {},
+                "ol": {},
+                "ul": {},
+                "li": {},
+                "h1": {},
+                "h2": {},
+                "h3": {},
+                "blockquote": {},
+                "u": 1,
+                "img": {
+                    "check_attributes": {
+                        "width": "numbers",
+                        "alt": "alt",
+                        "src": "url",
+                        "height": "numbers"
+                    }
+                },
+                "a":  {
+                    set_attributes: {
+                        target: "_blank",
+                        rel:    "nofollow"
+                    },
+                    check_attributes: {
+                        href:   "url" // important to avoid XSS
+                    }
+                },
+                "span": 1,
+                "div": 1
+            }
+        },
+        stylesheets: ["./lib/css/wysiwyg-color.css"], // (path_to_project/lib/css/wysiwyg-color.css)
+        locale: "en"
+    };
+
+    if (typeof $.fn.wysihtml5.defaultOptionsCache === 'undefined') {
+        $.fn.wysihtml5.defaultOptionsCache = $.extend(true, {}, $.fn.wysihtml5.defaultOptions);
+    }
 
     var locale = $.fn.wysihtml5.locale = {
         en: {

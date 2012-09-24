@@ -95,15 +95,15 @@ if (wysihtml5.browser.supported()) {
 
     var that = this;
 
-    $(this.textareaElement).wysihtml5({
+    $(this.textareaElement).wysihtml5('deepExtend', {
       parserRules: {
 	classes: {
-	  bar: 1
+	  bar: 1,
+          spanner: 1
 	},
 	tags: {
 	  strong: 1,
 	  blink: 1,
-	  i: { remove: 1 },
 	  em: { rename_tag: "blink" },
 	  span: {}
 	}
@@ -115,13 +115,13 @@ if (wysihtml5.browser.supported()) {
 
       equal(editor.parse("hello <b>foo</b>!").toLowerCase(), "hello <b>foo</b>!", "<b></b> tags are still allowed");
 
-      equal(editor.parse('hello <span class="bar">foo</span>!').toLowerCase(), 'hello <span class="bar">foo</span>!', "<span></span> tags are allowed")
+      equal(editor.parse('hello <span class="spanner">foo</span>!').toLowerCase(), 'hello <span class="spanner">foo</span>!', "<span></span> tags are allowed")
 
       equal(editor.parse(that.colorText).toLowerCase(), that.colorText, 'classes used for font color are still allowed');
 
       equal(editor.parse("hello <strong>foo</strong>!").toLowerCase(), "hello <strong>foo</strong>!", "<strong></strong> tags are allowed");
 
-      equal(editor.parse("hello <i>foo</i>!").toLowerCase(), "hello foo!", "<i></i> tags are stripped out, but not their content");
+      equal(editor.parse('hello <i class="bar">foo</i>!').toLowerCase(), 'hello <i class="bar">foo</i>!', '<i class="bar"> survives');
 
       equal(editor.parse("hello <em>foo</em>!").toLowerCase(), "hello <blink>foo</blink>!", "<em></em> tags are converted to <blink></blink>");
 
