@@ -130,7 +130,7 @@ $.fn.wysihtml5.defaultOptions
 
 this object has the same structure as the options object you pass in to .wysihtml5().  You can revert to the original defaults by calling:
 
-<pre> 
+<pre>
 $(this).wysihtml5('resetDefaults') 
 </pre> 
 
