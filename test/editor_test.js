@@ -18,6 +18,10 @@ if (wysihtml5.browser.supported()) {
       this.originalBodyClassName = document.body.className;
 
       document.body.appendChild(this.form);
+
+      // this does not behave well with async tests; the bootstrap-wysihtml5 default options
+      // are not thread-safe
+      // $(this).wysihtml5("resetDefaults");
     },
 
     teardown: function() {
@@ -249,11 +253,8 @@ if (wysihtml5.browser.supported()) {
     // var editor = new wysihtml5.Editor(this.textareaElement, {
     //   parserRules: { tags: { "strong": true } }
     // });
-    $(this.textareaElement).wysihtml5({
-      parserRules: { tags: { "strong": true } }
-    });
+    $(this.textareaElement).wysihtml5('shallowExtend', { parserRules: { tags: {"strong": true} }});
     var editor = $(this.textareaElement).data('wysihtml5').editor;
-
 
     editor.observe("load", function() {
       var html = "<strong>timmay!</strong>",
@@ -419,9 +420,7 @@ if (wysihtml5.browser.supported()) {
     //   parserRules: parserRules
     // });
 
-    $(this.textareaElement).wysihtml5({
-      parserRules: parserRules
-    });
+    $(this.textareaElement).wysihtml5('shallowExtend', {parserRules: parserRules});
     var editor = $(this.textareaElement).data('wysihtml5').editor;
 
     editor.observe("load", function() {
@@ -452,7 +451,7 @@ if (wysihtml5.browser.supported()) {
     //   }
     // });
 
-    $(this.textareaElement).wysihtml5({
+    $(this.textareaElement).wysihtml5('shallowExtend', {
       parserRules: parserRules,
       parser:      function(html, rules, context) {
         equal(html.toLowerCase(), input, "HTML passed into parser is equal to the one which just got inserted");
