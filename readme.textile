@@ -134,7 +134,7 @@ this object has the same structure as the options object you pass in to .wysihtm
 $(this).wysihtml5('resetDefaults') 
 </pre> 
 
-Operations on the defaults are not thread-safe; if you're going to change the defaults, you probably want to do it only once, after you load the bootstrap-wysihtml plugin and before you instantiate your edtiors.
+Operations on the defaults are not thread-safe; if you're going to change the defaults, you probably want to do it only once, after you load the bootstrap-wysihtml plugin and before you start instantiating your editors.
 
 h2. The underlying wysihtml5 object
 
