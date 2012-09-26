@@ -314,16 +314,16 @@
         shallowExtend: function (options) {
             var settings = $.extend({}, $.fn.wysihtml5.defaultOptions, options || {});
             var that = this;
-            methods.bypassDefaults.apply(that, [settings]);
+            return methods.bypassDefaults.apply(that, [settings]);
         },
         deepExtend: function(options) {
             var settings = $.extend(true, {}, $.fn.wysihtml5.defaultOptions, options || {});
             var that = this;
-            methods.bypassDefaults.apply(that, [settings]);
+            return methods.bypassDefaults.apply(that, [settings]);
         },
         init: function(options) {
             var that = this;
-            methods.shallowExtend.apply(that, [options]);
+            return methods.shallowExtend.apply(that, [options]);
         }
     };
 
