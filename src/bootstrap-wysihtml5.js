@@ -1,6 +1,20 @@
 !function($, wysi) {
     "use strict";
+     (function(wysi) {
+          var undef;
+          wysi.commands.customSpan = {
+              exec: function(composer, command, sty) {
+                  return wysi.commands.formatInline.exec(composer, 'insertHTML', "span", sty, new RegExp(sty));
+              },
+              state: function(composer, command, sty) {
+                  return wysi.commands.formatInline.state(composer, 'insertHTML', "span", sty, new RegExp(sty));
+              },
 
+              value: function() {
+                  return undef;
+              }
+        };
+    })(wysi);
     var templates = function(key, locale) {
 
         var tpl = {
@@ -18,7 +32,7 @@
                 });
                 locale.font_styles.custom = locale.font_styles.custom || [];
                 $.each(locale.font_styles.custom, function(style, displayName) {
-                    tmpl += "<li><a data-wysihtml5-command='customSpan' data-wsyihtml5-command-value='" + style + "'>" + displayName + "</a></li>";
+                    tmpl += "<li><a data-wysihtml5-command='customSpan' data-wysihtml5-command-value='" + style + "'>" + displayName + "</a></li>";
                 });
                 tmpl += "</ul>" +
                 "</li>";
