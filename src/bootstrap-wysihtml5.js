@@ -4,19 +4,26 @@
     var templates = function(key, locale) {
 
         var tpl = {
-            "font-styles":
-                "<li class='dropdown'>" +
-                  "<a class='btn dropdown-toggle' data-toggle='dropdown' href='#'>" +
-                  "<i class='icon-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
-                  "</a>" +
-                  "<ul class='dropdown-menu'>" +
-                    "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='div'>" + locale.font_styles.normal + "</a></li>" +
-                    "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1'>" + locale.font_styles.h1 + "</a></li>" +
-                    "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2'>" + locale.font_styles.h2 + "</a></li>" +
-                    "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3'>" + locale.font_styles.h3 + "</a></li>" +
-                  "</ul>" +
-                "</li>",
-
+            "font-styles": (function() {
+                var tmpl = "<li class='dropdown'>" +
+                    "<a class='btn dropdown-toggle' data-toggle='dropdown' href='#'>" +
+                    "<i class='icon-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
+                    "</a>" +
+                    "<ul class='dropdown-menu'>";
+                var stylesToRemove = locale.font_styles.remove || [];
+                $.each(['normal','h1','h2','h3'], function(idx, key) {
+                     if (stylesToRemove.indexOf(key) < 0) {
+                       tmpl += "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='" + key + "'>" + locale.font_styles[key] + "</a></li>";
+                     }
+                });
+                locale.font_styles.custom = locale.font_styles.custom || [];
+                $.each(locale.font_styles.custom, function(style, displayName) {
+                    tmpl += "<li><a data-wysihtml5-command='customSpan' data-wsyihtml5-command-value='" + style + "'>" + displayName + "</a></li>";
+                });
+                tmpl += "</ul>" +
+                "</li>";
+                return tmpl;
+            })(),
             "emphasis":
                 "<li>" +
                   "<div class='btn-group'>" +
@@ -105,7 +112,13 @@
 
     var Wysihtml5 = function(el, options) {
         this.el = el;
-        this.toolbar = this.createToolbar(el, options || defaultOptions);
+        var toolbarOpts = options || defaultOptions
+        // add custom classes to the save class list */
+        for(var k in toolbarOpts.customStyles) {
+            toolbarOpts.parserRules.classes[k] = 1;
+        }
+        this.configuration = toolbarOpts;
+        this.toolbar = this.createToolbar(el, toolbarOpts);
         this.editor =  this.createEditor(options);
 
         window.editor = this.editor;
@@ -144,6 +157,8 @@
                 'style': "display:none"
             });
             var culture = options.locale || defaultOptions.locale || "en";
+            locale[culture].font_styles.custom = options.customStyles;
+            locale[culture].font_styles.remove = options.removeStyles;
             for(var key in defaultOptions) {
                 var value = false;
 
@@ -348,6 +363,8 @@
         "link": true,
         "image": true,
         events: {},
+        customStyles: {},
+        removeStyles: [],
         parserRules: {
             classes: {
                 // (path_to_project/lib/css/wysiwyg-color.css)
