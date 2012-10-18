@@ -29,6 +29,19 @@
         },
         html: {
             edit: "Editar HTML"
+        },
+        colours: {
+          black: "Negro",
+          silver: "Plata",
+          gray: "Gris",
+          maroon: "Marrón",
+          red: "Rojo",
+          purple: "Purpura",
+          green: "Verde",
+          olive: "Oliva",
+          navy: "Azul Marino",
+          blue: "Azul",
+          orange: "Naranjo"
         }
     };
 }(jQuery));
