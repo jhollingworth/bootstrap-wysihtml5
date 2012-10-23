@@ -68,7 +68,7 @@ $('#some-textarea').wysihtml5({
 });
 </pre>
 
-h3. Custom Templates for buttons
+h3. Custom Templates for Toolbar Buttons
 
 To define custom templates for buttons, you can submit a customTemplates hash with the new definitions.  Each entry should be a function which expects 'locale' to manage the translations.
 
@@ -83,22 +83,24 @@ For example, the default template used for the editHtml mode button looks like t
 </pre>
 
 You can change it to not use the pencil icon (for example) by defining the custom template like this:
-<pre>
-     var myCustomTemplates = {
-       html : function(locale) {
-         return "<li>" +
-                "<div class='btn-group'>" +
-                "<a class='btn' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'>HTML</a>" +
-                "</div>" +
-                "</li>";
-       }
-     }
- 
-     // pass in your custom templates on init
-     $('#some-textarea').wysihtml5({
-	customTemplates: myCustomTemplates
-     });
+
+<pre language='javascript'>
+var myCustomTemplates = {
+  html : function(locale) {
+    return "<li>" +
+           "<div class='btn-group'>" +
+           "<a class='btn' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'>HTML</a>" +
+           "</div>" +
+           "</li>";
+  }
+}
+
+// pass in your custom templates on init
+$('#some-textarea').wysihtml5({
+   customTemplates: myCustomTemplates
+});
 </pre>
+
 
 This will override only the toolbar template for html, and all others will use the default.
 
