@@ -135,31 +135,6 @@ $(this).wysihtml5('resetDefaults')
 
 Operations on the defaults are not thread-safe; if you're going to change the defaults, you probably want to do it only once, after you load the bootstrap-wysihtml plugin and before you start instantiating your editors.
 
-h3. Custom styles menu
-
-You can add custom styles (which wrap text with spans that have a class) using adding customStyles to your options.
-
-<pre>
-$(this).wysihtml5({customStyles : { my_style: 'My Style' }}) 
-</pre>
-
-will create a new item in the styles dropdown menu which reads "MyStyle".  If you highlight text and choose this style, the text will be wrapped with
-
-<pre>
-<span class="my_style"> the selected text </span>
-</pre>
-
-These custom styles will also be automatically added to the safe-class list in the parser.
-
-You can also remove default styles from this menu by including an array of styles you'd like to not be included.  The default styles are 'h1','h2','h3', and 'normal'.  
-
-<pre>
-$(this).wysihtml5({removeStyles : ['h2', 'h3']})
-</pre>
-
-will give you a styles menu that only includes 'h1' and 'normal'.
-
-
 h2. The underlying wysihtml5 object
 
 You can access the "wysihtml5 editor object":https://github.com/xing/wysihtml5 like this:

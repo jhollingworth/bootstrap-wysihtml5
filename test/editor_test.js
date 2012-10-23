@@ -36,13 +36,10 @@ if (wysihtml5.browser.supported()) {
     getComposerElement: function() {
       return this.getIframeElement().contentWindow.document.body;
     },
+
     getIframeElement: function() {
       var iframes = document.querySelectorAll("iframe.wysihtml5-sandbox");
       return iframes[iframes.length - 1];
-    },
-    getToolbarElement: function() {
-      var toolbars = document.querySelectorAll(".wysihtml5-toolbar");
-      return toolbars[0];
     }
   });
 
@@ -116,27 +113,6 @@ if (wysihtml5.browser.supported()) {
       ok(wysihtml5.dom.hasClass(composerElement, name), "iFrame's body has adopted name as className");
       ok(wysihtml5.dom.hasClass(composerElement, "death-star"), "iFrame's body has adopted the textarea className");
       ok(!wysihtml5.dom.hasClass(textareaElement, name), "Textarea has not adopted name as className");
-      start();
-    });
-  });
-
-
-  asyncTest("Check the toolbar and customStyles", function() {
-    expect(4);
-
-    this.textareaElement.className = "death-star";
-
-    var that   = this;
-    var name   = "star-wars-input";
-    $(this.textareaElement).wysihtml5({ html: true, customStyles: { other: 'Other Style'}, removeStyles: [ 'h1' ] });
-    var editor = $(this.textareaElement).data('wysihtml5').editor;
-    var classes = $(this.textareaElement).data('wysihtml5').configuration.parserRules.classes
-    ok(classes.other === 1, 'custom classes were not added to the safe parse list');
-    editor.observe("load", function() {
-      var toolbar = that.getToolbarElement();
-      ok($(toolbar).find('ul.dropdown-menu a[data-wysihtml5-command=formatBlock]').length === 3, "toolbar includes all default styles that were not removed witgh removeStyles option");
-      ok($(toolbar).find('ul.dropdown-menu a[data-wysihtml5-command=customSpan]').length === 1 , "toolbar includes the custom styles");
-      ok(/Other Style/.test($(toolbar).find('ul.dropdown-menu a[data-wysihtml5-command=customSpan]').text()), "toolbar custom style title is not correct");
       start();
     });
   });
