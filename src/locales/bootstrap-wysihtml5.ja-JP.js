@@ -1,5 +1,5 @@
 /**
- * German translation for bootstrap-wysihtml5
+ * Japanese translation for bootstrap-wysihtml5
  */
 (function($){
     $.fn.wysihtml5.locale["ja-JP"] = {
