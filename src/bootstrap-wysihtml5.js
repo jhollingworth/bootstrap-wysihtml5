@@ -212,6 +212,7 @@
             var insertImage = function() {
                 var url = urlInput.val();
                 urlInput.val(initialValue);
+                self.editor.currentView.element.focus();
                 self.editor.composer.commands.exec("insertImage", url);
             };
 
@@ -258,6 +259,7 @@
             var insertLink = function() {
                 var url = urlInput.val();
                 urlInput.val(initialValue);
+                self.editor.currentView.element.focus();
                 self.editor.composer.commands.exec("createLink", {
                     href: url,
                     target: "_blank",
