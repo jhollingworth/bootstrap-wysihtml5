@@ -1,5 +1,5 @@
 /**
- * Uruguayan spanish translation for bootstrap-wysihtml5
+ * Italian translation for bootstrap-wysihtml5
  */
 (function($){
     $.fn.wysihtml5.locale["it-IT"] = {
