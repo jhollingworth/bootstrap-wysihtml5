@@ -6,7 +6,8 @@
         font_styles: {
               normal: "Texto normal",
               h1: "Título 1",
-              h2: "Título 2"
+              h2: "Título 2",
+              h3: "Título 3"
         },
         emphasis: {
               bold: "Negrita",
@@ -20,11 +21,11 @@
               indent: "Agregar sangría"
         },
         link: {
-              insert: "Insertar link",
+              insert: "Insertar enlace",
               cancel: "Cancelar"
         },
         image: {
-              insert: "Insertar imagen",
+              insert: "Insertar imágen",
               cancel: "Cancelar"
         },
         html: {
@@ -36,12 +37,12 @@
           gray: "Gris",
           maroon: "Marrón",
           red: "Rojo",
-          purple: "Purpura",
+          purple: "Púrpura",
           green: "Verde",
           olive: "Oliva",
           navy: "Azul Marino",
           blue: "Azul",
-          orange: "Naranjo"
+          orange: "Naranja"
         }
     };
 }(jQuery));
