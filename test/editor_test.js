@@ -149,6 +149,34 @@ if (wysihtml5.browser.supported()) {
   });
 
 
+  asyncTest('Check whether customTemplates work', function() {
+    expect(3);
+
+    $(this.textareaElement).wysihtml5({
+      html: true,
+      customTemplates:
+      {
+        image: function(locale) { 
+          return '<div class="custom_image">' + locale.image.insert + '</div>';
+        },
+        html: function(locale) {
+           return "<li>" +
+                  "<div class='btn-group html-edit-button'>" +
+                  "<a class='btn' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'>HTML</a>" +
+                  "</div>" +
+                  "</li>";
+       }
+      }
+    });
+    editor.observe("load", function() {
+      equal($('form .wysihtml5-toolbar').length, 1, 'Toolbar is showing')
+      equal($('form .wysihtml5-toolbar .custom_image').length, 1, 'Custom image template works')
+      equal($('form .wysihtml5-toolbar li .html-edit-button a').html(), 'HTML', 'Custom html template works')
+      start();
+    });
+  });
+
+
   asyncTest("Check whether attributes are copied", function() {
     expect(1);
 
