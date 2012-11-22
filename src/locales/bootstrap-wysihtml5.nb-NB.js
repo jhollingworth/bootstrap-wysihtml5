@@ -1,5 +1,5 @@
 /**
- * French translation for bootstrap-wysihtml5
+ * Norwegian translation for bootstrap-wysihtml5
  */
 (function($){
     $.fn.wysihtml5.locale["nb-NB"] = {
