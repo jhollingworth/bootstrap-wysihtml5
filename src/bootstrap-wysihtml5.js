@@ -2,9 +2,10 @@
     "use strict";
 
     var tpl = {
-        "font-styles": function(locale) {
+        "font-styles": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li class='dropdown'>" +
-              "<a class='btn dropdown-toggle' data-toggle='dropdown' href='#'>" +
+              "<a class='btn dropdown-toggle" + size + "' data-toggle='dropdown' href='#'>" +
               "<i class='icon-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
               "</a>" +
               "<ul class='dropdown-menu'>" +
@@ -16,28 +17,31 @@
             "</li>";
         },
 
-        "emphasis": function(locale) {
+        "emphasis": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='btn-group'>" +
-                "<a class='btn' data-wysihtml5-command='bold' title='CTRL+B'>" + locale.emphasis.bold + "</a>" +
-                "<a class='btn' data-wysihtml5-command='italic' title='CTRL+I'>" + locale.emphasis.italic + "</a>" +
-                "<a class='btn' data-wysihtml5-command='underline' title='CTRL+U'>" + locale.emphasis.underline + "</a>" +
+                "<a class='btn" + size + "' data-wysihtml5-command='bold' title='CTRL+B'>" + locale.emphasis.bold + "</a>" +
+                "<a class='btn" + size + "' data-wysihtml5-command='italic' title='CTRL+I'>" + locale.emphasis.italic + "</a>" +
+                "<a class='btn" + size + "' data-wysihtml5-command='underline' title='CTRL+U'>" + locale.emphasis.underline + "</a>" +
               "</div>" +
             "</li>";
         },
 
-        "lists": function(locale) {
+        "lists": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='btn-group'>" +
-                "<a class='btn' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "'><i class='icon-list'></i></a>" +
-                "<a class='btn' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "'><i class='icon-th-list'></i></a>" +
-                "<a class='btn' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "'><i class='icon-indent-right'></i></a>" +
-                "<a class='btn' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "'><i class='icon-indent-left'></i></a>" +
+                "<a class='btn" + size + "' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "'><i class='icon-list'></i></a>" +
+                "<a class='btn" + size + "' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "'><i class='icon-th-list'></i></a>" +
+                "<a class='btn" + size + "' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "'><i class='icon-indent-right'></i></a>" +
+                "<a class='btn" + size + "' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "'><i class='icon-indent-left'></i></a>" +
               "</div>" +
             "</li>";
         },
 
-        "link": function(locale) {
+        "link": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='bootstrap-wysihtml5-insert-link-modal modal hide fade'>" +
                 "<div class='modal-header'>" +
@@ -52,11 +56,12 @@
                   "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.link.insert + "</a>" +
                 "</div>" +
               "</div>" +
-              "<a class='btn' data-wysihtml5-command='createLink' title='" + locale.link.insert + "'><i class='icon-share'></i></a>" +
+              "<a class='btn" + size + "' data-wysihtml5-command='createLink' title='" + locale.link.insert + "'><i class='icon-share'></i></a>" +
             "</li>";
         },
 
-        "image": function(locale) {
+        "image": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='bootstrap-wysihtml5-insert-image-modal modal hide fade'>" +
                 "<div class='modal-header'>" +
@@ -71,21 +76,23 @@
                   "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.image.insert + "</a>" +
                 "</div>" +
               "</div>" +
-              "<a class='btn' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "'><i class='icon-picture'></i></a>" +
+              "<a class='btn" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "'><i class='icon-picture'></i></a>" +
             "</li>";
         },
 
-        "html": function(locale) {
+        "html": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='btn-group'>" +
-                "<a class='btn' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'><i class='icon-pencil'></i></a>" +
+                "<a class='btn" + size + "' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'><i class='icon-pencil'></i></a>" +
               "</div>" +
             "</li>";
         },
 
-        "color": function(locale) {
+        "color": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li class='dropdown'>" +
-              "<a class='btn dropdown-toggle' data-toggle='dropdown' href='#'>" +
+              "<a class='btn dropdown-toggle" + size + "' data-toggle='dropdown' href='#'>" +
                 "<span class='current-color'>" + locale.colours.black + "</span>&nbsp;<b class='caret'></b>" +
               "</a>" +
               "<ul class='dropdown-menu'>" +
@@ -105,8 +112,8 @@
         }
     };
 
-    var templates = function(key, locale) {
-        return tpl[key](locale);
+    var templates = function(key, locale, options) {
+        return tpl[key](locale, options);
     };
 
 
@@ -167,7 +174,7 @@
                 }
 
                 if(value === true) {
-                    toolbar.append(templates(key, locale[culture]));
+                    toolbar.append(templates(key, locale[culture], options));
 
                     if(key === "html") {
                         this.initHtml(toolbar);

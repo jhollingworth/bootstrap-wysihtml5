@@ -70,14 +70,14 @@ $('#some-textarea').wysihtml5({
 
 h3. Custom Templates for Toolbar Buttons
 
-To define custom templates for buttons, you can submit a customTemplates hash with the new definitions.  Each entry should be a function which expects 'locale' to manage the translations.
+To define custom templates for buttons, you can submit a customTemplates hash with the new definitions.  Each entry should be a function which expects 'locale' and optional 'options' to manage the translations.
 
-For example, the default template used for the editHtml mode button looks like this
+For example, the default template used for the editHtml mode button looks like this (with size fetched from the optional 'options')
 
 <pre>
 <li>
   <div class='btn-group'>
-    <a class='btn' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'><i class='icon-pencil'></i></a>" 
+    <a class='btn" + size + "' data-wysihtml5-action='change_view' title='" + locale.html.edit + "'><i class='icon-pencil'></i></a>"
   </div>
 </li>
 </pre>
