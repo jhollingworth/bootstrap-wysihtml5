@@ -386,7 +386,7 @@
                 "wysiwyg-color-blue" : 1,
                 "wysiwyg-color-teal" : 1,
                 "wysiwyg-color-aqua" : 1,
-                "wysiwyg-color-orange" : 1,
+                "wysiwyg-color-orange" : 1
             },
             tags: {
                 "b":  {},
