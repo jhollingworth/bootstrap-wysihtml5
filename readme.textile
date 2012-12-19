@@ -177,7 +177,7 @@ h2. The underlying wysihtml5 object
 You can access the "wysihtml5 editor object":https://github.com/xing/wysihtml5 like this:
 
 <pre>
-var wysihtml5Editor = $('#some-textarea').wysihtml5().data("wysihtml5").editor;
+var wysihtml5Editor = $('#some-textarea').data("wysihtml5").editor;
 wysihtml5Editor.composer.commands.exec("bold");
 </pre>
 
