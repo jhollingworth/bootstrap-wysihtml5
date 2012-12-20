@@ -226,11 +226,16 @@
             var urlInput = insertImageModal.find('.bootstrap-wysihtml5-insert-image-url');
             var insertButton = insertImageModal.find('a.btn-primary');
             var initialValue = urlInput.val();
+            var caretBookmark;
 
             var insertImage = function() {
                 var url = urlInput.val();
                 urlInput.val(initialValue);
                 self.editor.currentView.element.focus();
+                if (caretBookmark) {
+                  self.editor.composer.selection.setBookmark(caretBookmark);
+                  caretBookmark = null;
+                }
                 self.editor.composer.commands.exec("insertImage", url);
             };
 
@@ -255,6 +260,8 @@
                 var activeButton = $(this).hasClass("wysihtml5-command-active");
 
                 if (!activeButton) {
+                    self.editor.currentView.element.focus(false);
+                    caretBookmark = self.editor.composer.selection.getBookmark();
                     insertImageModal.modal('show');
                     insertImageModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
                         e.stopPropagation();
@@ -273,11 +280,16 @@
             var urlInput = insertLinkModal.find('.bootstrap-wysihtml5-insert-link-url');
             var insertButton = insertLinkModal.find('a.btn-primary');
             var initialValue = urlInput.val();
+            var caretBookmark;
 
             var insertLink = function() {
                 var url = urlInput.val();
                 urlInput.val(initialValue);
                 self.editor.currentView.element.focus();
+                if (caretBookmark) {
+                  self.editor.composer.selection.setBookmark(caretBookmark);
+                  caretBookmark = null;
+                }
                 self.editor.composer.commands.exec("createLink", {
                     href: url,
                     target: "_blank",
@@ -307,6 +319,8 @@
                 var activeButton = $(this).hasClass("wysihtml5-command-active");
 
                 if (!activeButton) {
+                    self.editor.currentView.element.focus(false);
+                    caretBookmark = self.editor.composer.selection.getBookmark();
                     insertLinkModal.appendTo('body').modal('show');
                     insertLinkModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
                         e.stopPropagation();
