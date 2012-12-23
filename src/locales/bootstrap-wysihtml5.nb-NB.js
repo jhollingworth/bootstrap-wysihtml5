@@ -46,4 +46,4 @@
           orange: "Oransj"
         }
     };
-ø(jQuery));
+}(jQuery));
