@@ -143,6 +143,10 @@
 
         createEditor: function(options) {
             options = options || {};
+            
+            // Add the toolbar to a clone of the options object so multiple instances
+            // of the WYISYWG don't break because "toolbar" is already defined
+            options = $.extend(true, {}, options);
             options.toolbar = this.toolbar[0];
 
             var editor = new wysi.Editor(this.el[0], options);
