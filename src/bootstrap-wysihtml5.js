@@ -266,7 +266,7 @@
                 if (!activeButton) {
                     self.editor.currentView.element.focus(false);
                     caretBookmark = self.editor.composer.selection.getBookmark();
-                    insertImageModal.modal('show');
+                    insertImageModal.appendTo('body').modal('show');
                     insertImageModal.on('click.dismiss.modal', '[data-dismiss="modal"]', function(e) {
                         e.stopPropagation();
                     });
