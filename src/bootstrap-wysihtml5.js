@@ -50,6 +50,7 @@
                 "</div>" +
                 "<div class='modal-body'>" +
                   "<input value='http://' class='bootstrap-wysihtml5-insert-link-url input-xlarge'>" +
+                  "<label class='checkbox'> <input type='checkbox' class='bootstrap-wysihtml5-insert-link-target' checked>" + locale.link.target + "</label>" +
                 "</div>" +
                 "<div class='modal-footer'>" +
                   "<a href='#' class='btn' data-dismiss='modal'>" + locale.link.cancel + "</a>" +
@@ -282,6 +283,7 @@
             var self = this;
             var insertLinkModal = toolbar.find('.bootstrap-wysihtml5-insert-link-modal');
             var urlInput = insertLinkModal.find('.bootstrap-wysihtml5-insert-link-url');
+            var targetInput = insertLinkModal.find('.bootstrap-wysihtml5-insert-link-target');
             var insertButton = insertLinkModal.find('a.btn-primary');
             var initialValue = urlInput.val();
             var caretBookmark;
@@ -294,10 +296,12 @@
                   self.editor.composer.selection.setBookmark(caretBookmark);
                   caretBookmark = null;
                 }
+
+                var newWindow = targetInput.prop("checked");
                 self.editor.composer.commands.exec("createLink", {
-                    href: url,
-                    target: "_blank",
-                    rel: "nofollow"
+                    'href' : url,
+                    'target' : (newWindow ? '_blank' : '_self'),
+                    'rel' : (newWindow ? 'nofollow' : '')
                 });
             };
             var pressedEnter = false;
@@ -427,12 +431,10 @@
                     }
                 },
                 "a":  {
-                    set_attributes: {
-                        target: "_blank",
-                        rel:    "nofollow"
-                    },
                     check_attributes: {
-                        href:   "url" // important to avoid XSS
+                        'href': "url", // important to avoid XSS
+                        'target': 'alt',
+                        'rel': 'alt'
                     }
                 },
                 "span": 1,
@@ -471,7 +473,8 @@
             },
             link: {
                 insert: "Insert link",
-                cancel: "Cancel"
+                cancel: "Cancel",
+                target: "Open link in new window"
             },
             image: {
                 insert: "Insert image",
