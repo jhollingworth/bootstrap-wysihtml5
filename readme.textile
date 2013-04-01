@@ -146,7 +146,7 @@ $('#some-textarea').wysihtml5('deepExtend', {
     classes: {
       "middle": 1
     },
-    tags {
+    tags: {
       strong: {},
       em: {}
     }
