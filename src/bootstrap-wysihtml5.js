@@ -350,7 +350,7 @@
             });
         },
         shallowExtend: function (options) {
-            var settings = $.extend({}, $.fn.wysihtml5.defaultOptions, options || {});
+            var settings = $.extend({}, $.fn.wysihtml5.defaultOptions, options || {}, $(this).data());
             var that = this;
             return methods.bypassDefaults.apply(that, [settings]);
         },
