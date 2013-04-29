@@ -13,6 +13,9 @@
                 "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1' tabindex='-1'>" + locale.font_styles.h1 + "</a></li>" +
                 "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2' tabindex='-1'>" + locale.font_styles.h2 + "</a></li>" +
                 "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3' tabindex='-1'>" + locale.font_styles.h3 + "</a></li>" +
+                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h4'>" + locale.font_styles.h4 + "</a></li>" +
+                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h5'>" + locale.font_styles.h5 + "</a></li>" +
+                "<li><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h6'>" + locale.font_styles.h6 + "</a></li>" +
               "</ul>" +
             "</li>";
         },
@@ -420,6 +423,9 @@
                 "h1": {},
                 "h2": {},
                 "h3": {},
+                "h4": {},
+                "h5": {},
+                "h6": {},
                 "blockquote": {},
                 "u": 1,
                 "img": {
@@ -458,7 +464,10 @@
                 normal: "Normal text",
                 h1: "Heading 1",
                 h2: "Heading 2",
-                h3: "Heading 3"
+                h3: "Heading 3",
+                h4: "Heading 4",
+                h5: "Heading 5",
+                h6: "Heading 6"
             },
             emphasis: {
                 bold: "Bold",
