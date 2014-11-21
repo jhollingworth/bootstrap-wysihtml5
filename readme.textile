@@ -1,4 +1,4 @@
-**This repo is no longer maintained. [bootstrap3-wysiwyg](https://github.com/bootstrap-wysiwyg/bootstrap3-wysiwyg) is much better**
+**This repo is no longer maintained. "bootstrap3-wysiwyg":https://github.com/bootstrap-wysiwyg/bootstrap3-wysiwyg is much better**
 
 h1. Overview
 
